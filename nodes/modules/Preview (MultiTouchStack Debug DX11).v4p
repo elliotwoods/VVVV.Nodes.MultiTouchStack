@@ -1,0 +1,127 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\Preview (MultiTouchStack Debug DX11).v4p" systemname="Preview (MultiTouchStack Debug)" filename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\Preview (MultiTouchStack Debug).v4p">
+   <BOUNDS type="Window" left="21468" top="14232" width="9000" height="6000">
+   </BOUNDS>
+   <PACK Name="addonpack" Version="35.0.0">
+   </PACK>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="0">
+   <BOUNDS type="Node" left="3072" top="216" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3072" top="216" width="792" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="World">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="GetCanvas (MultiTouchStack)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="GetCanvas (MultiTouchStack)" componentmode="Hidden" id="2">
+   <BOUNDS type="Node" left="3072" top="1476" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="World" visible="1" slicecount="1" values="||">
+   </PIN>
+   <BOUNDS type="Box" left="3072" top="1476">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="GetSlides (MultiTouchStack)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="GetSlides (MultiTouchStack)" componentmode="Hidden" id="3">
+   <BOUNDS type="Node" left="1224" top="1476" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="World" visible="1" slicecount="1" values="||">
+   </PIN>
+   <BOUNDS type="Box" left="1224" top="1476">
+   </BOUNDS>
+   <PIN pinname="Slides" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Output Node" dstnodeid="3" dstpinname="World" linkstyle="Bezier">
+   <LINKPOINT x="3072" y="960">
+   </LINKPOINT>
+   <LINKPOINT x="1284" y="960">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="GetCursors (MultiTouchStack)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="GetCursors (MultiTouchStack)" componentmode="Hidden" id="4">
+   <BOUNDS type="Node" left="5052" top="1476" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="World" visible="1" slicecount="1" values="||">
+   </PIN>
+   <BOUNDS type="Box" left="5052" top="1476">
+   </BOUNDS>
+   <PIN pinname="Cursors" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Output Node" dstnodeid="4" dstpinname="World" linkstyle="Bezier">
+   <LINKPOINT x="3132" y="960">
+   </LINKPOINT>
+   <LINKPOINT x="5052" y="960">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="0" srcpinname="Output Node" dstnodeid="2" dstpinname="World" linkstyle="Bezier">
+   <LINKPOINT x="3096" y="966">
+   </LINKPOINT>
+   <LINKPOINT x="3096" y="966">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="PreviewCursor (MultiTouchStack Debug DX11)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewCursor (MultiTouchStack Debug DX11).v4p" nodename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewCursor (MultiTouchStack Debug DX11).v4p" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="5064" top="2292" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5064" top="2292" width="3592" height="4144">
+   </BOUNDS>
+   <BOUNDS type="Window" left="20976" top="7320" width="10488" height="8940">
+   </BOUNDS>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="9">
+   <BOUNDS type="Box" left="3000" top="4632" width="792" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3000" top="4632" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Layer Out|">
+   </PIN>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Cursors" dstnodeid="8" dstpinname="Input">
+   </LINK>
+   <NODE systemname="PreviewSlide (MulitTouchStack Debug DX11)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewSlide (MulitTouchStack Debug DX11).v4p" componentmode="Hidden" id="10" nodename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewSlide (MulitTouchStack Debug DX11).v4p">
+   <BOUNDS type="Node" left="1236" top="2292" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1236" top="2292" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="24768" top="11016" width="10968" height="10200">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="3" srcpinname="Slides" dstnodeid="10" dstpinname="Input">
+   </LINK>
+   <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="3000" top="3864" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Count" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Layer 1" visible="1">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   <PIN pinname="Layer 3" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="10" srcpinname="Layer Out" dstnodeid="11" dstpinname="Layer 1" linkstyle="Bezier">
+   <LINKPOINT x="1296" y="3216">
+   </LINKPOINT>
+   <LINKPOINT x="3180" y="3216">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Layer Out" dstnodeid="9" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Layer Out" dstnodeid="11" dstpinname="Layer 3" linkstyle="Bezier">
+   <LINKPOINT x="5064" y="3204">
+   </LINKPOINT>
+   <LINKPOINT x="3600" y="3204">
+   </LINKPOINT>
+   </LINK>
+   </PATCH>
