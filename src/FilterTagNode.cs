@@ -8,15 +8,16 @@ using VVVV.Utils.VColor;
 using VVVV.Utils.VMath;
 
 using VVVV.Core.Logging;
+using System.Linq;
 #endregion usings
 
 namespace VVVV.Nodes.MultiTouchStack
 {
-	public enum StringFilter {
+	public enum KeyFilter {
+		ContainsAll,
+		ContainsAny,
 		Matches,
-		Contains,
-		MatchesAll,
-		ContainsAll
+		DoesntContainAny
 	}
 	
 	#region PluginInfo
@@ -29,10 +30,10 @@ namespace VVVV.Nodes.MultiTouchStack
 		public ISpread<Slide> FInSlides;
 		
 		[Input("Key")]
-		public ISpread<String> FInKey;
+		public ISpread<String> FInKeys;
 		
-		[Input("Comparison")]
-		public ISpread<StringFilter> FInComparison;
+		[Input("Filter", IsSingle = true)]
+		public ISpread<KeyFilter> FInKeyFilter;
 
 		[Output("Output")]
 		public ISpread<Slide> FOutSlides;
@@ -41,10 +42,67 @@ namespace VVVV.Nodes.MultiTouchStack
 		public ILogger FLogger;
 		#endregion fields & pins
 
+		bool Filter(Slide slide)
+		{
+			switch (FInKeyFilter[0])
+			{
+				case KeyFilter.ContainsAny:
+					{
+						foreach (var key in this.FInKeys)
+						{
+							if(slide.Tags.Contains(key))
+							{
+								return true;
+							}
+						}
+						return false;
+					}
+				case KeyFilter.ContainsAll:
+					{
+						foreach (var key in this.FInKeys)
+						{
+							if (!slide.Tags.Contains(key))
+							{
+								return false;
+							}
+						}
+						return true;
+					}
+				case KeyFilter.Matches:
+					{
+						return Enumerable.SequenceEqual(slide.Tags.OrderBy(tag => tag)
+							, this.FInKeys.OrderBy(tag => tag));
+					}
+				case KeyFilter.DoesntContainAny:
+					{
+						foreach (var key in this.FInKeys)
+						{
+							if (slide.Tags.Contains(key))
+							{
+								return false;
+							}
+						}
+						return true;
+					}
+				default:
+					return false;
+			}
+		}
+
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			
+			FOutSlides.SliceCount = 0;
+			foreach(var slide in FInSlides)
+			{
+				if(slide != null)
+				{
+					if (Filter(slide))
+					{
+						FOutSlides.Add(slide);
+					}
+				}
+			}
 		}
 	}
 }

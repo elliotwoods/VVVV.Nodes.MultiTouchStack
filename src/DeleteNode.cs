@@ -8,6 +8,7 @@ using VVVV.Utils.VColor;
 using VVVV.Utils.VMath;
 
 using VVVV.Core.Logging;
+using System.Linq;
 #endregion usings
 
 namespace VVVV.Nodes.MultiTouchStack
@@ -18,14 +19,11 @@ namespace VVVV.Nodes.MultiTouchStack
 	public class DeleteNode : IPluginEvaluate
 	{
 		#region fields & pins
-		[Input("Input")]
+		[Input("Input", AutoValidate = false)]
 		public ISpread<Slide> FInSlides;
 		
 		[Input("Delete", IsBang=true)]
 		public ISpread<bool> FInDelete;
-		
-		[Output("Success")]
-		public ISpread<bool> FOutSuccess;
 
 		[Import()]
 		public ILogger FLogger;
@@ -34,7 +32,34 @@ namespace VVVV.Nodes.MultiTouchStack
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			
+			//check if delete is called at all (if not, quit early)
+			if (!FInDelete.Any(value => value == true))
+			{
+				return;
+			}
+
+			//update inputs
+			{
+				FInSlides.Sync();
+				SpreadMax = Utils.SpreadMax(FInSlides, FInDelete);
+			}
+
+
+			for (int i=0; i<SpreadMax; i++)
+			{
+				if(FInDelete[i])
+				{
+					var slide = FInSlides[i];
+					if(slide != null)
+					{
+						var world = slide.World.Target as World;
+						if(world != null)
+						{
+							world.Slides.Remove(slide);
+						}
+					}
+				}
+			}
 		}
 	}
 }

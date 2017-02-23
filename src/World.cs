@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using VVVV.Utils.VMath;
 
 namespace VVVV.Nodes.MultiTouchStack
 {
-	public class World
+	public class World : IDisposable
 	{
 		public List<Slide> Slides; // ordered by z-order
 		public Dictionary<int, Cursor> Cursors;
@@ -60,5 +61,50 @@ namespace VVVV.Nodes.MultiTouchStack
 			}
 		}
 
+		public Matrix4x4 GetZOrderTransform(int indexInList)
+		{
+			return VMath.Translate(0.0, 0.0, 1.0 - (double)indexInList / (double)this.Slides.Count);
+		}
+
+		public Matrix4x4 GetSlideTransformWithZOrder(int indexInList)
+		{
+			return this.Slides[indexInList].Transform * this.GetZOrderTransform(indexInList);
+		}
+
+		public Matrix4x4 GetSlideTransformWithZOrder(Slide slide)
+		{
+			var indexInList = this.Slides.FindIndex(slideInList => ReferenceEquals(slide, slideInList));
+			return slide.Transform * GetZOrderTransform(indexInList);
+		}
+
+		#region IDisposable Support
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					foreach(var slide in this.Slides)
+					{
+						slide.Dispose();
+					}
+
+					foreach(var cursor in this.Cursors)
+					{
+						cursor.Value.AssignedHitEvent = null;
+						cursor.Value.AssignedSlide = null;
+					}
+				}
+				disposedValue = true;
+			}
+		}
+
+		public void Dispose()
+		{
+			Dispose(true);
+		}
+		#endregion
 	}
 }

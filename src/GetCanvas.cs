@@ -19,7 +19,7 @@ namespace VVVV.Nodes.MultiTouchStack
 	{
 		#region fields & pins
 		[Input("World", IsSingle = true)]
-		public ISpread<World> FInWorld;
+		public Pin<World> FInWorld;
 
 		[Output("Canvas Transform")]
 		public ISpread<Matrix4x4> FOutCanvasTransform;
@@ -34,18 +34,16 @@ namespace VVVV.Nodes.MultiTouchStack
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			if (FInWorld[0] == null)
+			if(!this.FInWorld.PluginIO.IsConnected)
 			{
 				FOutCanvasTransform[0] = VMath.IdentityMatrix;
 				FOutCursorsOnCanvas.SliceCount = 0;
 				return;
 			}
-			else
-			{
-				var world = FInWorld[0];
-				FOutCanvasTransform[0] = world.CanvasTransform;
-				FOutCursorsOnCanvas.AssignFrom(world.CursorsOnCanvas);
-			}
+
+			var world = FInWorld[0];
+			FOutCanvasTransform[0] = world.CanvasTransform;
+			FOutCursorsOnCanvas.AssignFrom(world.CursorsOnCanvas);
 		}
 	}
 }

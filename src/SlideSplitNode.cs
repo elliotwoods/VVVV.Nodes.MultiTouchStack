@@ -64,13 +64,14 @@ namespace VVVV.Nodes.MultiTouchStack
 
 				//apply a z-order transform
 				var transform = slide.Transform;
-				transform = transform * VMath.Translate(0.0, 0.0, 1.0 - (double)i / (double)SpreadMax);
+				transform = slide.TransformWithZOrder;
 				
 				FOutIndex[i] = slide.Index;
 				FOutTransform[i] = transform;
 				FOutMinimumScale[i] = slide.MinimumScale;
 				FOutMaximumScale[i] = slide.MaximumScale;
 				FOutTags[i].AssignFrom(slide.Tags);
+
 				FOutCursorsAttached[i].AssignFrom(slide.AttachedCursors);
 			}
 		}

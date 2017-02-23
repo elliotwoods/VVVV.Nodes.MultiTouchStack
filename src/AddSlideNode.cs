@@ -9,6 +9,7 @@ using VVVV.Utils.VMath;
 
 using VVVV.Core.Logging;
 using System.Collections.Generic;
+using System.Linq;
 #endregion usings
 
 namespace VVVV.Nodes.MultiTouchStack
@@ -20,38 +21,35 @@ namespace VVVV.Nodes.MultiTouchStack
 	{
 		#region fields & pins
 		[Input("World", IsSingle=true)]
-		public ISpread<World> FInWorld;
+		public Pin<World> FInWorld;
 		
-		[Input("Position")]
+		[Input("Position", AutoValidate = false)]
 		public ISpread<Vector2D> FInPosition;
 		
-		[Input("Rotation")]
+		[Input("Rotation", AutoValidate = false)]
 		public ISpread<Double> FInRotation;
 		
-		[Input("Scale", DefaultValues = new double[] { 1.0, 1.0 })]
+		[Input("Scale", AutoValidate = false, DefaultValues = new double[] { 1.0, 1.0 })]
 		public ISpread<Vector2D> FInScale;
 		
-		[Input("Tags")]
+		[Input("Tags", AutoValidate = false)]
 		public ISpread<ISpread<String>> FInTags;
 		
-		[Input("Minimum Scale", DefaultValue = 0.1)]
+		[Input("Minimum Scale", AutoValidate = false, DefaultValue = 0.1)]
 		public ISpread<Double> FInMinimumScale;
 		
-		[Input("Maximum Scale", DefaultValue = 100.0)]
+		[Input("Maximum Scale", AutoValidate = false, DefaultValue = 100.0)]
 		public ISpread<Double> FInMaximumScale;
 		
-		[Input("Drag Hit Test")]
+		[Input("Drag Hit Test", AutoValidate = false)]
 		public ISpread<IHitTestFunction> FInDragHitTestFunction;
 		
-		[Input("Hit Events")]
+		[Input("Hit Events", AutoValidate = false)]
 		public ISpread<ISpread<HitEvent>> FInHitEvents;
 		
 		[Input("Add", IsBang=true)]
 		public ISpread<bool> FInAdd;
 		
-		[Output("Success", IsBang = true)]
-		public ISpread<bool> FOutSuccess;
-
 		[Import()]
 		public ILogger FLogger;
 		#endregion fields & pins
@@ -59,18 +57,47 @@ namespace VVVV.Nodes.MultiTouchStack
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			var world = FInWorld[0];
-			if(world == null)
+			if(!FInWorld.PluginIO.IsConnected)
 			{
 				return;
 			}
+
+			//check if add is called at all (if not, quit early)
+			if(!FInAdd.Any(add => add == true))
+			{
+				return;
+			}
+
+			//evaluate the inputs
+			{
+				FInPosition.Sync();
+				FInRotation.Sync();
+				FInScale.Sync();
+				FInTags.Sync();
+				FInMinimumScale.Sync();
+				FInMaximumScale.Sync();
+				FInDragHitTestFunction.Sync();
+				FInHitEvents.Sync();
+
+				SpreadMax = Utils.SpreadMax(FInPosition
+					, FInRotation
+					, FInScale
+					, FInTags
+					, FInMinimumScale
+					, FInMaximumScale
+					, FInDragHitTestFunction
+					, FInHitEvents
+					, FInAdd);
+			}
+
+			var world = FInWorld[0];
 
 			for(int i=0; i<SpreadMax; i++)
 			{
 				if (FInAdd[i])
 				{
 					//construct the new slide
-					var newSlide = new Slide
+					var newSlide = new Slide(world)
 					{
 						Index = world.NextAvailableIndex,
 						Transform = VMath.Scale(FInScale[i].x, FInScale[i].y, 1.0)
@@ -81,7 +108,6 @@ namespace VVVV.Nodes.MultiTouchStack
 						MaximumScale = FInMaximumScale[i],
 						DragHitTestFunction = FInDragHitTestFunction[i],
 						HitEvents = new List<HitEvent>(FInHitEvents[i]),
-						AttachedCursors = new List<Cursor>()
 					};
 
 					//clear out any null HitEvents (e.g. if spread was empty)

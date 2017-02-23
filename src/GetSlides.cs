@@ -19,7 +19,7 @@ namespace VVVV.Nodes.MultiTouchStack
 	{
 		#region fields & pins
 		[Input("World", IsSingle = true)]
-		public ISpread<World> FInWorld;
+		public Pin<World> FInWorld;
 
 		[Output("Slides")]
 		public ISpread<Slide> FOutSlides;
@@ -31,7 +31,7 @@ namespace VVVV.Nodes.MultiTouchStack
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			if (FInWorld[0] == null)
+			if (!this.FInWorld.PluginIO.IsConnected)
 			{
 				FOutSlides.SliceCount = 0;
 				return;

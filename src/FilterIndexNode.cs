@@ -8,6 +8,7 @@ using VVVV.Utils.VColor;
 using VVVV.Utils.VMath;
 
 using VVVV.Core.Logging;
+using System.Collections.Generic;
 #endregion usings
 
 namespace VVVV.Nodes.MultiTouchStack
@@ -34,7 +35,20 @@ namespace VVVV.Nodes.MultiTouchStack
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			
+			FOutSlides.SliceCount = 0;
+
+			var indexList = new List<int>(FInIndex);
+
+			foreach(var slide in FInSlides)
+			{
+				if (slide != null)
+				{
+					if (indexList.Contains(slide.Index))
+					{
+						FOutSlides.Add(slide);
+					}
+				}
+			}
 		}
 	}
 }

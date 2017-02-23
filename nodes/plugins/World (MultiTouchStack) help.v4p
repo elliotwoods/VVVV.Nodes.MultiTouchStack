@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\World (MultiTouchStack) help.v4p" locked="0" scrollx="0" scrolly="1080">
-   <BOUNDS type="Window" left="16608" top="6024" width="12216" height="15900">
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\World (MultiTouchStack) help.v4p" locked="0" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="16608" top="6024" width="12324" height="10572">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="228" top="228" width="5100" height="456">
@@ -195,7 +195,7 @@
    <LINK srcnodeid="25" srcpinname="Slides" dstnodeid="10" dstpinname="Input Node">
    </LINK>
    <NODE systemname="Preview (MultiTouchStack Debug DX11)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\Preview (MultiTouchStack Debug DX11).v4p" nodename="Preview (MultiTouchStack Debug DX11)" componentmode="Hidden" id="26">
-   <BOUNDS type="Node" left="972" top="11184" width="100" height="100">
+   <BOUNDS type="Node" left="972" top="7344" width="100" height="100">
    </BOUNDS>
    <PIN pinname="World" visible="1">
    </PIN>
@@ -203,9 +203,9 @@
    </PIN>
    </NODE>
    <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="27">
-   <BOUNDS type="Node" left="624" top="12168" width="100" height="100">
+   <BOUNDS type="Node" left="624" top="8328" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="624" top="12168" width="4800" height="3600">
+   <BOUNDS type="Box" left="624" top="8328" width="4800" height="3600">
    </BOUNDS>
    <BOUNDS type="Window" left="2376" top="9708" width="9900" height="9648">
    </BOUNDS>
@@ -229,7 +229,7 @@
    <LINK srcnodeid="23" srcpinname="Cursor Position XY" dstnodeid="0" dstpinname="Cursor PositionXY">
    </LINK>
    <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="31">
-   <BOUNDS type="Node" left="792" top="11664" width="100" height="100">
+   <BOUNDS type="Node" left="792" top="7824" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer 1" visible="1">
    </PIN>
@@ -241,9 +241,9 @@
    <LINK srcnodeid="26" srcpinname="Layer Out" dstnodeid="31" dstpinname="Layer 1">
    </LINK>
    <LINK srcnodeid="23" srcpinname="Mouse Preview Layer" dstnodeid="31" dstpinname="Layer 2" linkstyle="Bezier" hiddenwhenlocked="1">
-   <LINKPOINT x="2868" y="6830">
+   <LINKPOINT x="2868" y="5550">
    </LINKPOINT>
-   <LINKPOINT x="2016" y="6802">
+   <LINKPOINT x="2016" y="4242">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="31" srcpinname="Layer Out" dstnodeid="27" dstpinname="Layers">

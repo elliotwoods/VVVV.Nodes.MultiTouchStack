@@ -2,7 +2,7 @@ using VVVV.Utils.VMath;
 using System;
 
 namespace VVVV.Nodes.MultiTouchStack {
-	public class Cursor : INotifyRelativesOfDeath
+	public class Cursor
 	{
 		public int Index;
 		public Vector2D Position;
@@ -16,21 +16,10 @@ namespace VVVV.Nodes.MultiTouchStack {
 			}
 		}
 
-		public Slide AssignedSlide;
-		public HitEvent AssignedHitEvent;
+		// keep alive any objects we're attached to even after they're removed from the World until Cursor dies
+		public Slide AssignedSlide; 
+		public HitEvent AssignedHitEvent; 
 
 		DateTime FBirthTime = DateTime.Now;
-
-		public void NotifyRelativesOfDeath()
-		{
-			if (this.AssignedSlide != null)
-			{
-				this.AssignedSlide.AttachedCursors.RemoveAll(cursor => cursor == this);
-			}
-			if (this.AssignedHitEvent != null)
-			{
-				this.AssignedHitEvent.AttachedCursors.RemoveAll(cursor => cursor == this);
-			}
-		}
 	}
 }

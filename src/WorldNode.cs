@@ -14,9 +14,9 @@ using System.Collections.Generic;
 namespace VVVV.Nodes.MultiTouchStack
 {
 	#region PluginInfo
-	[PluginInfo(Name = "World", Category = "MultiTouchStack", Help = "The world of slides in the MultiTouch Stack", Tags = "", Author = "elliotwoods")]
+	[PluginInfo(Name = "World", Category = "MultiTouchStack", Help = "The world of slides in the MultiTouch Stack", Tags = "", Author = "elliotwoods", AutoEvaluate = true)]
 	#endregion PluginInfo
-	public class WorldNode : IPluginEvaluate
+	public class WorldNode : IPluginEvaluate, IDisposable
 	{
 		#region fields & pins
 		[Input("Cursor Index")]
@@ -193,26 +193,26 @@ namespace VVVV.Nodes.MultiTouchStack
 			//--
 			//
 
-			//dead cursors
-			{
-				foreach (var cursorLostThisFrame in FWorld.CursorsLostThisFrame)
-				{
-					cursorLostThisFrame.NotifyRelativesOfDeath();
-				}
-			}
-
 			//dead slides
 			{
 				foreach(var slideToRemoveThisFrame in FWorld.SlidesToRemoveThisFrame)
 				{
-					slideToRemoveThisFrame.NotifyRelativesOfDeath();
 					FWorld.Slides.Remove(slideToRemoveThisFrame);
 				}
 			}
 
-			//dead events
-			//nothing to do : they die when both attached slides and cursors die
-
+			//clean out dead weak references
+			{
+				foreach(var slide in FWorld.Slides)
+				{
+					slide.AttachedCursors.RemoveAll(Cursor => this.FWorld.CursorsLostThisFrame.Contains(Cursor));
+					
+					foreach(var hitEvent in slide.HitEvents)
+					{
+						hitEvent.AttachedCursors.RemoveAll(Cursor => this.FWorld.CursorsLostThisFrame.Contains(Cursor));
+					}
+				}
+			}
 			//
 			//--
 
@@ -239,5 +239,27 @@ namespace VVVV.Nodes.MultiTouchStack
 			//
 			//--
 		}
+
+		#region IDisposable Support
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					this.FWorld.Dispose();
+				}
+
+				disposedValue = true;
+			}
+		}
+
+		public void Dispose()
+		{
+			Dispose(true);
+		}
+		#endregion
 	}
 }

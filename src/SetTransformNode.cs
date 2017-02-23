@@ -8,6 +8,7 @@ using VVVV.Utils.VColor;
 using VVVV.Utils.VMath;
 
 using VVVV.Core.Logging;
+using System.Linq;
 #endregion usings
 
 namespace VVVV.Nodes.MultiTouchStack
@@ -18,18 +19,15 @@ namespace VVVV.Nodes.MultiTouchStack
 	public class SetTransformNode : IPluginEvaluate
 	{
 		#region fields & pins
-		[Input("Input")]
+		[Input("Input", AutoValidate = false)]
 		public ISpread<Slide> FInSlides;
 		
-		[Input("Transform")]
+		[Input("Transform", AutoValidate = false)]
 		public ISpread<Matrix4x4> FInTransform;
 		
 		[Input("Set", IsBang=true)]
 		public ISpread<bool> FInSet;
 		
-		[Output("Success")]
-		public ISpread<bool> FOutSuccess;
-
 		[Import()]
 		public ILogger FLogger;
 		#endregion fields & pins
@@ -37,7 +35,30 @@ namespace VVVV.Nodes.MultiTouchStack
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			
+			//check if set is called at all (if not, quit early)
+			if (!FInSet.Any(value => value == true))
+			{
+				return;
+			}
+
+			//update inputs
+			{
+				FInSlides.Sync();
+				FInTransform.Sync();
+				SpreadMax = Utils.SpreadMax(FInSlides, FInTransform, FInSet);
+			}
+
+			for (int i=0; i<SpreadMax; i++)
+			{
+				if(FInSet[i])
+				{
+					var slide = FInSlides[i];
+					if(slide != null)
+					{
+						slide.Transform = FInTransform[i];
+					}
+				}
+			}
 		}
 	}
 }
