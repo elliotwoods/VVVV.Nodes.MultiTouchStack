@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Diagnostics;
 #endregion usings
 
 namespace VVVV.Nodes.MultiTouchStack
@@ -27,48 +28,14 @@ namespace VVVV.Nodes.MultiTouchStack
 			Luminance
 		}
 
-		public class Function : IHitTestFunction, IDisposable
+		public class Function : IHitTestFunction
 		{
-			class ImageStore
-			{
-				public int ReferenceCount = 0;
-				public Bitmap Bitmap
-				{
-					get
-					{
-						if(!this.FImageLoader.IsCompleted)
-						{
-							return null;
-						} else
-						{
-							return this.FBitmap;
-						}
-					}
-				}
-
-				Bitmap FBitmap;
-				Task FImageLoader;
-
-				public ImageStore(string filename)
-				{
-					this.ReferenceCount = 1;
-
-					//asynchronously load the image
-					FImageLoader = Task.Run(() =>
-					{
-						using (var fs = new System.IO.FileStream(filename, System.IO.FileMode.Open))
-						{
-							this.FBitmap = new Bitmap(fs);
-						}
-					});
-				}
-			}
-
-			static Dictionary<string, ImageStore> GImageStores = new Dictionary<string, ImageStore>();
+			public static Dictionary<string, WeakReference<Bitmap>> GImageCache = new Dictionary<string, WeakReference<Bitmap>>();
 
 			public string Filename { get; private set; }
 			public TestType TestType { get; private set; }
 			public Double Threshold { get; private set; }
+			public Bitmap Bitmap { get; private set; }
 
 			public Function(string filename, TestType testType, Double threshold)
 			{
@@ -77,12 +44,32 @@ namespace VVVV.Nodes.MultiTouchStack
 				this.Threshold = threshold;
 				this.Filename = filename;
 
-				if(!GImageStores.ContainsKey(filename))
+				//get the bitmap from the cache if available
+				if (GImageCache.ContainsKey(filename))
 				{
-					GImageStores.Add(filename, new ImageStore(filename));
-				} else
+					//we have an entry in the cache
+					Bitmap bitmap;
+					if (GImageCache[filename].TryGetTarget(out bitmap))
+					{
+						//the entry is alive so use it
+						this.Bitmap = bitmap;
+					}
+					else
+					{
+						//the entry is stale so remove it
+						GImageCache.Remove(filename);
+					}
+				}
+
+				//load the image if it wasn't loaded from the cache
+				if (this.Bitmap == null)
 				{
-					GImageStores[filename].ReferenceCount++;
+					//open and close file
+					using (var fs = new System.IO.FileStream(filename, System.IO.FileMode.Open))
+					{
+						this.Bitmap = new Bitmap(fs);
+					}
+					GImageCache.Add(filename, new WeakReference<Bitmap>(this.Bitmap));
 				}
 			}
 
@@ -90,22 +77,13 @@ namespace VVVV.Nodes.MultiTouchStack
 			{
 				try
 				{
-					var bitmap = GImageStores[this.Filename].Bitmap;
+					var bitmap = this.Bitmap;
 
-					if (bitmap == null)
-					{
-						//return solid quad (default personality)
-						return localCoordinates.x >= -0.5
-							&& localCoordinates.x <= +0.5
-							&& localCoordinates.y >= -0.5
-							&& localCoordinates.y <= +0.5;
-					}
-
-					var x = (int) ((0.5 + localCoordinates.x) * bitmap.Width);
-					var y = (int) ((0.5 - localCoordinates.y) * bitmap.Height);
+					var x = (int)((0.5 + localCoordinates.x) * bitmap.Width);
+					var y = (int)((0.5 - localCoordinates.y) * bitmap.Height);
 
 					//check if outside bounds
-					if(x < 0
+					if (x < 0
 						|| x >= bitmap.Width
 						|| y < 0
 						|| y >= bitmap.Height)
@@ -114,60 +92,29 @@ namespace VVVV.Nodes.MultiTouchStack
 					}
 
 					var color = bitmap.GetPixel(x, y);
-					switch(this.TestType)
+					switch (this.TestType)
 					{
 						case TestType.Alpha:
 							return (Double)color.A / (Double)Byte.MaxValue >= this.Threshold;
 						case TestType.Luminance:
-							return color.GetBrightness() >= (float) this.Threshold;
+							return color.GetBrightness() >= (float)this.Threshold;
 						default:
 							return false;
 					}
 				}
 				catch
 				{
-					return false;
+					//return solid quad (default personality)
+					return localCoordinates.x >= -0.5
+						&& localCoordinates.x <= +0.5
+						&& localCoordinates.y >= -0.5
+						&& localCoordinates.y <= +0.5;
 				}
 			}
-
-			#region IDisposable Support
-			private bool disposedValue = false; // To detect redundant calls
-
-			protected virtual void Dispose(bool disposing)
-			{
-				if (!disposedValue)
-				{
-					if(this.Filename != null
-						&& GImageStores.ContainsKey(this.Filename))
-					{
-						//remove reference to this image file in store
-						GImageStores[this.Filename].ReferenceCount--;
-
-						if (GImageStores[this.Filename].ReferenceCount <= 0)
-						{
-							GImageStores.Remove(this.Filename);
-						}
-					}
-					
-
-					disposedValue = true;
-				}
-			}
-
-			~Function()
-			{
-				this.Dispose();
-			}
-
-			public void Dispose()
-			{
-				Dispose(true);
-			}
-			#endregion
 		}
 
 		#region fields & pins
-		[Input("Filename", StringType = StringType.Filename, FileMask = "PNG File (*.png)|*.png| JPEG File (*.jpg)|*.jpg;*.jpeg|BMP File (*.bmp)|*.bmp")]
+		[Input("Filename", StringType = StringType.Filename, FileMask = "Image File (*.bmp;*.gif;*.exif;*.jpg;*.jpeg;*.png;*.tif;*.tiff)|*.bmp;*.gif;*.exif;*.jpg;*.jpeg;*.png;*.tif;*.tiff|PNG File (*.png)|*.png| JPEG File (*.jpg)|*.jpg;*.jpeg|BMP File (*.bmp)|*.bmp")]
 		public IDiffSpread<string> FInFilename;
 		
 		[Input("Test")]
@@ -192,21 +139,26 @@ namespace VVVV.Nodes.MultiTouchStack
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			FOutput.SliceCount = SpreadMax;
-			FOutError.SliceCount = SpreadMax;
-			FOutSuccess.SliceCount = SpreadMax;
-			for (int i = 0; i < SpreadMax; i++)
+			if(FInFilename.IsChanged
+				|| FInTestType.IsChanged
+				|| FInThreshold.IsChanged)
 			{
-				try
+				FOutput.SliceCount = SpreadMax;
+				FOutError.SliceCount = SpreadMax;
+				FOutSuccess.SliceCount = SpreadMax;
+				for (int i = 0; i < SpreadMax; i++)
 				{
-					FOutput[i] = new Function(FInFilename[i], FInTestType[i], FInThreshold[i]);
-					FOutError[i] = "OK";
-					FOutSuccess[i] = true;
-				}
-				catch (Exception e)
-				{
-					FOutError[i] = e.Message;
-					FOutSuccess[i] = false;
+					try
+					{
+						FOutput[i] = new Function(FInFilename[i], FInTestType[i], FInThreshold[i]);
+						FOutError[i] = "OK";
+						FOutSuccess[i] = true;
+					}
+					catch (Exception e)
+					{
+						FOutError[i] = e.Message;
+						FOutSuccess[i] = false;
+					}
 				}
 			}
 		}

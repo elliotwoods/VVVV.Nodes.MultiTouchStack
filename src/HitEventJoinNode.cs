@@ -19,13 +19,10 @@ namespace VVVV.Nodes.MultiTouchStack
 	{
 		#region fields & pins
 		[Input("Hit Test Function")]
-		public ISpread<IHitTestFunction> FInHitTestFunction;
+		public IDiffSpread<IHitTestFunction> FInHitTestFunction;
 
 		[Input("Event Name")]
-		public ISpread<string> FInEventName;
-
-		[Input("Cursor Action")]
-		public ISpread<HitEvent.CursorActionType> FInCursorAction;
+		public IDiffSpread<string> FInEventName;
 
 		[Output("Output")]
 		public ISpread<HitEvent> FOutput;
@@ -37,34 +34,34 @@ namespace VVVV.Nodes.MultiTouchStack
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			FOutput.SliceCount = SpreadMax;
-
-			for(int i=0; i<SpreadMax; i++)
+			if(FInHitTestFunction.IsChanged || FInEventName.IsChanged)
 			{
-				var hitTestFunction = FInHitTestFunction[i];
-				var eventName = FInEventName[i];
-				var cursorAction = FInCursorAction[i];
+				FOutput.SliceCount = SpreadMax;
 
-				//check if we need to rebuild this output
-				if(FOutput[i] != null)
+				for (int i = 0; i < SpreadMax; i++)
 				{
-					var output = FOutput[i];
-					if(output.HitTestFunction == hitTestFunction
-						&& output.EventName == eventName
-						&& output.CursorAction == cursorAction)
+					var hitTestFunction = FInHitTestFunction[i];
+					var eventName = FInEventName[i];
+
+					//check if we need to rebuild this output
+					if (FOutput[i] != null)
 					{
-						//already constructed, save some time
-						continue;
+						var output = FOutput[i];
+						if (output.HitTestFunction == hitTestFunction
+							&& output.Name == eventName)
+						{
+							//already constructed, save some time
+							continue;
+						}
 					}
-				}
 
-				//build it
-				FOutput[i] = new HitEvent
-				{
-					HitTestFunction = hitTestFunction,
-					EventName = eventName,
-					CursorAction = cursorAction
-				};
+					//build it
+					FOutput[i] = new HitEvent
+					{
+						HitTestFunction = hitTestFunction,
+						Name = eventName
+					};
+				}
 			}
 		}
 	}

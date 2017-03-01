@@ -6,7 +6,7 @@ using System.Linq;
 namespace VVVV.Nodes.MultiTouchStack {
 	public class Slide : IDisposable
 	{
-		public WeakReference World;
+		public WeakReference<World> World;
 		public int Index;
 		public Matrix4x4 Transform;
 		public List<String> Tags;
@@ -14,22 +14,32 @@ namespace VVVV.Nodes.MultiTouchStack {
 		public Double MaximumScale;
 		public IHitTestFunction DragHitTestFunction;
 		public List<HitEvent> HitEvents;
+
 		public List<Cursor> AttachedCursors;
+		public List<HitCallback> HitCallbacksThisFrame;
 
 		public Slide(World world)
 		{
-			this.World = new WeakReference(world);
+			this.World = new WeakReference<World>(world);
 			this.AttachedCursors = new List<Cursor>();
+			this.HitCallbacksThisFrame = new List<HitCallback>();
 		}
 
 		public Matrix4x4 TransformWithZOrder
 		{
 			get
 			{
-				var world = this.World.Target as World;
-				var indexInWorld = world.Slides.IndexOf(this);
-				var zTransform = world.GetZOrderTransform(indexInWorld);
-				return this.Transform * zTransform;
+				World world;
+				if (this.World.TryGetTarget(out world))
+				{
+					var indexInWorld = world.Slides.IndexOf(this);
+					var zTransform = world.GetZOrderTransform(indexInWorld);
+					return this.Transform * zTransform;
+				} else
+				{
+					return this.Transform;
+				}
+				
 			}
 		}
 
@@ -52,56 +62,28 @@ namespace VVVV.Nodes.MultiTouchStack {
 
 		public void Update()
 		{
-			if(this.AttachedCursors.Count == 1)
+			var movementOccured = Utils.MultitouchTransform(ref this.Transform, this.AttachedCursors, this.MinimumScale, this.MaximumScale);
+
+			//if movement occurred, ensure we are within canvas limits
+			if(movementOccured)
 			{
-				var cursor0 = this.AttachedCursors[0];
-				this.Transform = this.Transform * VMath.Translate(new Vector3D(cursor0.Movement));
-			} else if(this.AttachedCursors.Count >= 2)
-			{
-				//choose the cursors with the most movement
-				var cursorsSortedByMovement = this.AttachedCursors.OrderByDescending(cursor => cursor.Movement.LengthSquared).ToList();
-
-				var cursor0Now = cursorsSortedByMovement[0].Position;
-				var cursor1Now = cursorsSortedByMovement[1].Position;
-				var cursor0Previous = cursorsSortedByMovement[0].Position - cursorsSortedByMovement[0].Movement;
-				var cursor1Previous = cursorsSortedByMovement[1].Position - cursorsSortedByMovement[1].Movement;
-
-				double num1 = (double)cursor0Previous.x;
-				double num2 = (double)cursor0Previous.y;
-				double num3 = (double)cursor1Previous.x;
-				double num4 = (double)cursor1Previous.y;
-				double num5 = (double)cursor0Now.x;
-				double num6 = (double)cursor0Now.y;
-				double num7 = (double)cursor1Now.x;
-				double num8 = (double)cursor1Now.y;
-				double num9 = num3 - num1;
-				double num10 = num4 - num2;
-				double num11 = num7 - num5;
-				double num12 = num8 - num6;
-				Math.Sqrt((num11 * num11 + num12 * num12) / (num9 * num9 + num10 * num10));
-				double num13 = (num9 * num11 + num10 * num12) / (num9 * num9 + num10 * num10);
-				double num14 = (num10 * num11 - num9 * num12) / (num9 * num9 + num10 * num10);
-				double num15 = num5 - (num13 * num1 + num14 * num2);
-				double num16 = num6 - (-num14 * num1 + num13 * num2);
-
-				var newTransform = this.Transform * new Matrix4x4(num13, -num14, 0.0, 0.0, num14, num13, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, num15, num16, 0.0, 1.0);
-
-				//check if newTransform doesn't break the rules before applying it
+				World world;
+				if(this.World.TryGetTarget(out world))
 				{
-					var scale = Math.Sqrt(newTransform[0, 0] * newTransform[0, 0] + newTransform[0, 1] * newTransform[0, 1])
-						+ Math.Sqrt(newTransform[1, 0] * newTransform[1, 0] + newTransform[1, 1] * newTransform[1, 1]);
-					scale /= 2.0f;
+					var width = world.Settings.CanvasSize.x;
+					var height = world.Settings.CanvasSize.y;
 
-					if (scale >= this.MinimumScale && scale <= this.MaximumScale)
-					{
-						this.Transform = newTransform;
-					}
-					else
-					{
-
-					}
+					this.Transform[3, 0] = VMath.Clamp(this.Transform[3, 0], -width, width);
+					this.Transform[3, 1] = VMath.Clamp(this.Transform[3, 1], -height, height);
 				}
+	
 			}
+		}
+
+		public Vector2D CanvasToSlide(Vector2D cursorInCanvas)
+		{
+			var cursorInSlide3 = VMath.Inverse(this.Transform) * cursorInCanvas;
+			return new Vector2D(cursorInSlide3.x, cursorInSlide3.y);
 		}
 
 		#region IDisposable Support

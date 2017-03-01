@@ -6,27 +6,27 @@ namespace VVVV.Nodes.MultiTouchStack
 {
 	public class World : IDisposable
 	{
+		public Settings Settings;
+
 		public List<Slide> Slides; // ordered by z-order
 		public Dictionary<int, Cursor> Cursors;
-		public Matrix4x4 CanvasTransform;
 
 		public List<Slide> SlidesToRemoveThisFrame;
 
 		public List<Cursor> CursorsAddedThisFrame;
 		public List<Cursor> CursorsLostThisFrame;
-		public List<HitEvent> HitEventsFiredThisFrame;
 
 		public World()
 		{
+			this.Settings = new Settings();
+
 			this.Slides = new List<Slide>();
 			this.Cursors = new Dictionary<int, Cursor>();
-			this.CanvasTransform = new Matrix4x4();
 
 			this.SlidesToRemoveThisFrame = new List<Slide>();
 
 			this.CursorsAddedThisFrame = new List<Cursor>();
 			this.CursorsLostThisFrame = new List<Cursor>();
-			this.HitEventsFiredThisFrame = new List<HitEvent>();
 		}
 
 		public int NextAvailableIndex

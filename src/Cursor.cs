@@ -4,9 +4,15 @@ using System;
 namespace VVVV.Nodes.MultiTouchStack {
 	public class Cursor
 	{
+		public WeakReference<World> World;
 		public int Index;
 		public Vector2D Position;
 		public Vector2D Movement;
+
+		public Cursor(World world)
+		{
+			this.World = new WeakReference<World>(world);
+		}
 
 		public Double LifeTime {
 			get

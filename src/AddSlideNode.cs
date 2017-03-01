@@ -107,7 +107,7 @@ namespace VVVV.Nodes.MultiTouchStack
 						MinimumScale = FInMinimumScale[i],
 						MaximumScale = FInMaximumScale[i],
 						DragHitTestFunction = FInDragHitTestFunction[i],
-						HitEvents = new List<HitEvent>(FInHitEvents[i]),
+						HitEvents = new List<HitEvent>(FInHitEvents[i])
 					};
 
 					//clear out any null HitEvents (e.g. if spread was empty)

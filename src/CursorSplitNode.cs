@@ -20,7 +20,7 @@ namespace VVVV.Nodes.MultiTouchStack
 		#region fields & pins
 		[Input("Input")]
 		public ISpread<Cursor> FInCursors;
-		
+
 		[Output("Index", Order = 0)]
 		public ISpread<int> FOutIndex;
 		
@@ -58,8 +58,10 @@ namespace VVVV.Nodes.MultiTouchStack
 			{
 				var cursor = FInCursors[i];
 				FOutIndex[i] = cursor.Index;
+
 				FOutPosition[i] = cursor.Position;
 				FOutMovement[i] = cursor.Movement;
+				
 				FOutLifetime[i] = cursor.LifeTime;
 
 				if(cursor.AssignedSlide == null)

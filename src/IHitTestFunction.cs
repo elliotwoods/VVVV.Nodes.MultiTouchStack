@@ -1,3 +1,4 @@
+using System;
 using VVVV.Utils.VMath;
 
 //Note that all HitTestFnunction's should be fully contained

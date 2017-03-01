@@ -52,10 +52,13 @@ namespace VVVV.Nodes.MultiTouchStack
 					var slide = FInSlides[i];
 					if(slide != null)
 					{
-						var world = slide.World.Target as World;
-						if(world != null)
+						World world;
+						if(slide.World.TryGetTarget(out world))
 						{
-							world.Slides.Remove(slide);
+							if(world.Slides.Contains(slide))
+							{
+								world.Slides.Remove(slide);
+							}
 						}
 					}
 				}

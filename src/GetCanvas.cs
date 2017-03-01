@@ -21,9 +21,6 @@ namespace VVVV.Nodes.MultiTouchStack
 		[Input("World", IsSingle = true)]
 		public Pin<World> FInWorld;
 
-		[Output("Canvas Transform")]
-		public ISpread<Matrix4x4> FOutCanvasTransform;
-
 		[Output("Cursors On Canvas")]
 		public ISpread<Cursor> FOutCursorsOnCanvas;
 
@@ -36,13 +33,11 @@ namespace VVVV.Nodes.MultiTouchStack
 		{
 			if(!this.FInWorld.PluginIO.IsConnected)
 			{
-				FOutCanvasTransform[0] = VMath.IdentityMatrix;
 				FOutCursorsOnCanvas.SliceCount = 0;
 				return;
 			}
 
 			var world = FInWorld[0];
-			FOutCanvasTransform[0] = world.CanvasTransform;
 			FOutCursorsOnCanvas.AssignFrom(world.CursorsOnCanvas);
 		}
 	}

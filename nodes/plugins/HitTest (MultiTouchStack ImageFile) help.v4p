@@ -489,7 +489,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5280" top="2220" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input String" slicecount="3" visible="1" values="|C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\help assets\blob 1.png|,|C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\help assets\blob 2.png|,|C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\help assets\blob 3.png|">
+   <PIN pinname="Input String" slicecount="3" visible="1" values="|.\help assets\blob 1.png|,|.\help assets\blob 2.png|,|.\help assets\blob 3.png|">
    </PIN>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -623,9 +623,9 @@
    <LINK srcnodeid="29" srcpinname="Texture Out" dstnodeid="57" dstpinname="Texture">
    </LINK>
    <LINK srcnodeid="25" srcpinname="Tags" dstnodeid="29" dstpinname="Filename" linkstyle="Bezier">
-   <LINKPOINT x="4740" y="7740">
+   <LINKPOINT x="3840" y="7734">
    </LINKPOINT>
-   <LINKPOINT x="1812" y="7740">
+   <LINKPOINT x="1812" y="7734">
    </LINKPOINT>
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="60">

@@ -355,9 +355,9 @@
    </PIN>
    </NODE>
    <NODE id="13" nodename="IOBox (Value Advanced)" componentmode="InABox" systemname="IOBox (Value Advanced)" hiddenwhenlocked="0" managers="">
-   <BOUNDS type="Box" left="9420" top="6576" width="708" height="2256">
+   <BOUNDS type="Box" left="7164" top="6576" width="708" height="2256">
    </BOUNDS>
-   <BOUNDS type="Node" left="9420" top="6576" width="0" height="0">
+   <BOUNDS type="Node" left="7164" top="6576" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" pintype="Configuration" values="||">
    </PIN>
@@ -433,7 +433,7 @@
    </PIN>
    </NODE>
    <NODE id="14" systemname="Add (String Spectral)" nodename="Add (String Spectral)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
-   <BOUNDS type="Node" left="4716" top="6216" width="100" height="100">
+   <BOUNDS type="Node" left="4740" top="6216" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1" pintype="Input">
    </PIN>
@@ -453,9 +453,9 @@
    </PIN>
    </NODE>
    <NODE id="15" nodename="IOBox (String)" componentmode="InABox" systemname="IOBox (String)" hiddenwhenlocked="0" managers="">
-   <BOUNDS type="Box" left="4716" top="6576" width="1464" height="2268">
+   <BOUNDS type="Box" left="4740" top="6576" width="1464" height="2268">
    </BOUNDS>
-   <BOUNDS type="Node" left="4716" top="6576" width="0" height="0">
+   <BOUNDS type="Node" left="4740" top="6576" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" pintype="Configuration" values="||">
    </PIN>
@@ -832,20 +832,24 @@
    </LINK>
    <LINK srcnodeid="11" srcpinname="Slides" dstnodeid="17" dstpinname="Input Node">
    </LINK>
-   <LINK srcnodeid="7" srcpinname="Index" dstnodeid="16" dstpinname="Y Input Value">
+   <LINK srcnodeid="7" srcpinname="Index" dstnodeid="16" dstpinname="Y Input Value" linkstyle="VHV">
+   <LINKPOINT x="2748" y="6306">
+   </LINKPOINT>
+   <LINKPOINT x="3132" y="6306">
+   </LINKPOINT>
    </LINK>
    <LINK srcnodeid="14" srcpinname="Output" dstnodeid="15" dstpinname="Input String">
    </LINK>
    <LINK srcnodeid="7" srcpinname="Tags Bin Size" dstnodeid="14" dstpinname="Bin Size" linkstyle="VHV">
-   <LINKPOINT x="6276" y="6120">
+   <LINKPOINT x="6284" y="6120">
    </LINKPOINT>
-   <LINKPOINT x="4968" y="6120">
+   <LINKPOINT x="4984" y="6120">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="7" srcpinname="Tags" dstnodeid="14" dstpinname="Input" linkstyle="VHV">
-   <LINKPOINT x="5936" y="6120">
+   <LINKPOINT x="5944" y="6120">
    </LINKPOINT>
-   <LINKPOINT x="5644" y="6120">
+   <LINKPOINT x="5660" y="6120">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="7" srcpinname="Cursors Attached Bin Size" dstnodeid="13" dstpinname="Y Input Value">

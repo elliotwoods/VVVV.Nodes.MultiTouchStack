@@ -26,7 +26,7 @@ namespace VVVV.Nodes.MultiTouchStack
 		public ISpread<Vector2D> FInCursorPosition;
 		
 		[Input("Settings")]
-		public ISpread<Settings> FInSettings;
+		public IDiffSpread<Settings> FInSettings;
 
 		[Input("Reset", IsBang = true)]
 		public ISpread<bool> FInReset;
@@ -49,7 +49,28 @@ namespace VVVV.Nodes.MultiTouchStack
 			//
 			if(FInReset[0])
 			{
-				this.FWorld = new World();
+				FWorld = new World();
+				if(FInSettings[0] != null)
+				{
+					FWorld.Settings = FInSettings[0];
+				}
+			}
+			//
+			//--
+
+
+
+			//--
+			//Settings
+			//--
+			//
+			if(FInSettings.IsChanged)
+			{
+				var settings = FInSettings[0];
+				if(settings != null)
+				{
+					FWorld.Settings = settings;
+				}
 			}
 			//
 			//--
@@ -60,16 +81,20 @@ namespace VVVV.Nodes.MultiTouchStack
 			//Clear frame state
 			//--
 			//
-			this.FWorld.HitEventsFiredThisFrame.Clear();
-			this.FWorld.CursorsAddedThisFrame.Clear();
-			this.FWorld.CursorsLostThisFrame.Clear();
+			FWorld.CursorsAddedThisFrame.Clear();
+			FWorld.CursorsLostThisFrame.Clear();
+			
+			foreach(var slide in FWorld.Slides)
+			{
+				slide.HitCallbacksThisFrame.Clear();
+			}
 			//
 			//--
 			
 			
 			
 			//--
-			//Cursor input
+			//Handle cursors added and lost
 			//--
 			//
 			{
@@ -101,7 +126,7 @@ namespace VVVV.Nodes.MultiTouchStack
 					} else
 					{
 						//new cursor
-						var cursor = new Cursor
+						var cursor = new Cursor(FWorld)
 						{
 							Index = cursorIndex,
 							Position = cursorPosition,
@@ -109,19 +134,15 @@ namespace VVVV.Nodes.MultiTouchStack
 						};
 
 						cursorsForNextFrame.Add(cursorIndex, cursor);
-						this.FWorld.CursorsAddedThisFrame.Add(cursor);
+						FWorld.CursorsAddedThisFrame.Add(cursor);
 
 						//check hits (in reverse z-order)
 						for(int iSlide = FWorld.Slides.Count - 1; iSlide >= 0; iSlide--)
 						{
-							var slide = this.FWorld.Slides[iSlide];
+							var slide = FWorld.Slides[iSlide];
 
 							//get cursor in local normalised slide coords
-							Vector2D cursorInSlide;
-							{
-								var cursorInSlide3 = VMath.Inverse(slide.Transform) * cursorPosition;
-								cursorInSlide = new Vector2D(cursorInSlide3.x, cursorInSlide3.y);
-							}
+							var cursorInSlide = slide.CanvasToSlide(cursorPosition);
 
 							bool thisSlideHasHit = false;
 
@@ -136,10 +157,6 @@ namespace VVVV.Nodes.MultiTouchStack
 									cursor.AssignedSlide = slide;
 									cursor.AssignedHitEvent = hitEvent;
 
-									if(hitEvent.CursorAction == HitEvent.CursorActionType.Down)
-									{
-										this.FWorld.HitEventsFiredThisFrame.Add(hitEvent);
-									}
 									thisSlideHasHit = true;
 									break;
 								}
@@ -159,9 +176,11 @@ namespace VVVV.Nodes.MultiTouchStack
 
 							if (thisSlideHasHit)
 							{
-								//move to back of stack
-								this.FWorld.Slides.Remove(slide);
-								this.FWorld.Slides.Add(slide);
+								if(FWorld.Settings.TapBringsToFront)
+								{
+									FWorld.Slides.Remove(slide);
+									FWorld.Slides.Add(slide);
+								}
 
 								//break out of loop
 								break;
@@ -178,8 +197,54 @@ namespace VVVV.Nodes.MultiTouchStack
 					{
 						if(!cursorsForNextFrame.ContainsKey(cursorFromPreviousFrame.Key))
 						{
-							this.FWorld.CursorsLostThisFrame.Add(cursorFromPreviousFrame.Value);
+							FWorld.CursorsLostThisFrame.Add(cursorFromPreviousFrame.Value);
 						}
+					}
+				}
+			}
+			//
+			//--
+
+
+
+			//--
+			//Handle events
+			//--
+			//
+			{
+				//Cursor down
+				foreach(var cursor in FWorld.CursorsAddedThisFrame)
+				{
+					var hitEvent = cursor.AssignedHitEvent;
+					if(hitEvent != null)
+					{
+						var hitCallback = new HitCallback
+						{
+							Event = hitEvent,
+							Cursor = cursor,
+							ActionType = HitCallback.CursorActionType.Down
+						};
+						cursor.AssignedSlide.HitCallbacksThisFrame.Add(hitCallback);
+					}
+				}
+
+				//Cursor release
+				foreach (var cursor in FWorld.CursorsLostThisFrame)
+				{
+					var hitEvent = cursor.AssignedHitEvent;
+					var slide = cursor.AssignedSlide;
+
+					if (hitEvent != null)
+					{
+						bool isHit = hitEvent.HitTestFunction.TestHit(slide.CanvasToSlide(cursor.Position));
+
+						var hitCallback = new HitCallback
+						{
+							Event = hitEvent,
+							Cursor = cursor,
+							ActionType = isHit ? HitCallback.CursorActionType.ReleaseInside : HitCallback.CursorActionType.ReleaseOutside
+						};
+						cursor.AssignedSlide.HitCallbacksThisFrame.Add(hitCallback);
 					}
 				}
 			}
@@ -195,7 +260,7 @@ namespace VVVV.Nodes.MultiTouchStack
 
 			//dead slides
 			{
-				foreach(var slideToRemoveThisFrame in FWorld.SlidesToRemoveThisFrame)
+				foreach (var slideToRemoveThisFrame in FWorld.SlidesToRemoveThisFrame)
 				{
 					FWorld.Slides.Remove(slideToRemoveThisFrame);
 				}
@@ -224,6 +289,7 @@ namespace VVVV.Nodes.MultiTouchStack
 			//
 			foreach(var slide in FWorld.Slides)
 			{
+				//apply motion from attached cursors
 				slide.Update();
 			}
 			//

@@ -81,9 +81,10 @@
     <Compile Include="GetCanvas.cs" />
     <Compile Include="GetCursorsNode.cs" />
     <Compile Include="GetSlides.cs" />
+    <Compile Include="HitCallback.cs" />
     <Compile Include="HitEvent.cs" />
     <Compile Include="HitEventJoinNode.cs" />
-    <Compile Include="HitResultNode.cs" />
+    <Compile Include="HitCallbackSplitNode.cs" />
     <Compile Include="IHitTestFunction.cs" />
     <Compile Include="HitTestImageFileNode.cs" />
     <Compile Include="HitTestTransformNode.cs" />

@@ -19,25 +19,33 @@ namespace VVVV.Nodes.MultiTouchStack
 	{
 		#region fields & pins
 		[Input("Tap Brings To Front", IsSingle=true, DefaultBoolean=true)]
-		public ISpread<bool> FInTapBringsToFront;
+		public IDiffSpread<bool> FInTapBringsToFront;
 
-		[Input("Canvas Can Be Transformed", IsSingle=true, DefaultBoolean=false)]
-		public ISpread<bool> FInCanvasCanBeTransformed;
-
-		[Input("Canvas Size", IsSingle=true, DefaultValues = new double[]{1.0, 1.0})]
-		public ISpread<Vector2D> FInCanvasSize;
+		[Input("Canvas Size", DefaultValues = new double[]{2.0, 2.0})]
+		public IDiffSpread<Vector2D> FInCanvasSize;
 
 		[Output("Output")]
 		public ISpread<Settings> FOutput;
 
 		[Import()]
 		public ILogger FLogger;
+
+		Settings FSettings = new Settings();
 		#endregion fields & pins
 
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			
+			if(FInTapBringsToFront.IsChanged
+				|| FInCanvasSize[0] != FOutput[0].CanvasSize)
+			{
+				var settings = new Settings
+				{
+					TapBringsToFront = FInTapBringsToFront[0],
+					CanvasSize = FInCanvasSize[0]
+				};
+				FOutput[0] = settings;
+			}
 		}
 	}
 }

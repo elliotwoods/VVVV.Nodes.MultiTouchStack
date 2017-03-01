@@ -20,7 +20,7 @@ namespace VVVV.Nodes.MultiTouchStack
 		#region fields & pins
 		[Input("Input")]
 		public ISpread<Slide> FInSlides;
-		
+
 		[Output("Index")]
 		public ISpread<int> FOutIndex;
 		
@@ -38,6 +38,9 @@ namespace VVVV.Nodes.MultiTouchStack
 
 		[Output("Cursors Attached")]
 		public ISpread<ISpread<Cursor>> FOutCursorsAttached;
+
+		[Output("Hit Callbacks")]
+		public ISpread<ISpread<HitCallback>> FOutHitCallbacks;
 
 		[Import()]
 		public ILogger FLogger;
@@ -57,22 +60,23 @@ namespace VVVV.Nodes.MultiTouchStack
 			FOutMaximumScale.SliceCount = SpreadMax;
 			FOutTags.SliceCount = SpreadMax;
 			FOutCursorsAttached.SliceCount = SpreadMax;
+			FOutHitCallbacks.SliceCount = SpreadMax;
 
-			for(int i=0; i<SpreadMax; i++)
+			for (int i = 0; i < SpreadMax; i++)
 			{
 				var slide = FInSlides[i];
 
 				//apply a z-order transform
 				var transform = slide.Transform;
 				transform = slide.TransformWithZOrder;
-				
+
 				FOutIndex[i] = slide.Index;
 				FOutTransform[i] = transform;
 				FOutMinimumScale[i] = slide.MinimumScale;
 				FOutMaximumScale[i] = slide.MaximumScale;
 				FOutTags[i].AssignFrom(slide.Tags);
-
 				FOutCursorsAttached[i].AssignFrom(slide.AttachedCursors);
+				FOutHitCallbacks[i].AssignFrom(slide.HitCallbacksThisFrame);
 			}
 		}
 	}

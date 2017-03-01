@@ -91,9 +91,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="12">
-   <BOUNDS type="Box" left="3444" top="6864" width="708" height="2256">
+   <BOUNDS type="Box" left="2988" top="6864" width="708" height="2256">
    </BOUNDS>
-   <BOUNDS type="Node" left="3444" top="6864" width="0" height="0">
+   <BOUNDS type="Node" left="2988" top="6864" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -111,9 +111,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="17">
-   <BOUNDS type="Box" left="5016" top="6864" width="1464" height="2268">
+   <BOUNDS type="Box" left="5040" top="6864" width="1464" height="2268">
    </BOUNDS>
-   <BOUNDS type="Node" left="5016" top="6864" width="0" height="0">
+   <BOUNDS type="Node" left="5040" top="6864" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -131,7 +131,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Add (String Spectral)" nodename="Add (String Spectral)" componentmode="Hidden" id="19">
-   <BOUNDS type="Node" left="5016" top="6504" width="100" height="100">
+   <BOUNDS type="Node" left="5040" top="6504" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -145,9 +145,9 @@
    <LINK srcnodeid="19" srcpinname="Output" dstnodeid="17" dstpinname="Input String">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="22">
-   <BOUNDS type="Box" left="9720" top="6864" width="708" height="2256">
+   <BOUNDS type="Box" left="7476" top="6864" width="708" height="2256">
    </BOUNDS>
-   <BOUNDS type="Node" left="9720" top="6864" width="0" height="0">
+   <BOUNDS type="Node" left="7476" top="6864" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -281,15 +281,15 @@
    <LINK srcnodeid="34" srcpinname="Index" dstnodeid="12" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="34" srcpinname="Tags" dstnodeid="19" dstpinname="Input" linkstyle="VHV">
-   <LINKPOINT x="6236" y="6408">
+   <LINKPOINT x="6244" y="6408">
    </LINKPOINT>
-   <LINKPOINT x="5944" y="6408">
+   <LINKPOINT x="5960" y="6408">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="34" srcpinname="Tags Bin Size" dstnodeid="19" dstpinname="Bin Size" linkstyle="VHV">
-   <LINKPOINT x="6576" y="6408">
+   <LINKPOINT x="6584" y="6408">
    </LINKPOINT>
-   <LINKPOINT x="5268" y="6408">
+   <LINKPOINT x="5284" y="6408">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="34" srcpinname="Cursors Attached Bin Size" dstnodeid="22" dstpinname="Y Input Value">
@@ -346,4 +346,8 @@
    </NODE>
    <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="37" dstpinname="ScaleXY">
    </LINK>
+   <NODE systemname="HitTest (MultiTouchStack Transform)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="HitTest (MultiTouchStack Transform)" componentmode="Hidden" id="40">
+   <BOUNDS type="Node" left="6384" top="5256" width="100" height="100">
+   </BOUNDS>
+   </NODE>
    </PATCH>

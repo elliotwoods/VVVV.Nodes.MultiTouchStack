@@ -7,17 +7,8 @@ namespace VVVV.Nodes.MultiTouchStack
 	//when a HitEvent is removed, we wait for the Cursor to die before we do
 	public class HitEvent : IDisposable
 	{
-		public enum CursorActionType
-		{
-			Down,
-			Release,
-			ReleaseInside,
-			ReleaseOutside
-		}
-
 		public IHitTestFunction HitTestFunction;
-		public string EventName;
-		public CursorActionType CursorAction;
+		public string Name;
 		public List<Cursor> AttachedCursors;
 
 		public HitEvent()

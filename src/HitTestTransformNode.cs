@@ -28,22 +28,44 @@ namespace VVVV.Nodes.MultiTouchStack
 			public Matrix4x4 Transform;
 			public Shape TestShape;
 
-			public bool TestHit(Vector2D localCoordinates)
+			bool FHasLoadBeenCalled;
+
+			public bool GetHasLoadBeenCalled()
 			{
-				if(TestShape == Shape.Quad)
+				return this.FHasLoadBeenCalled;
+			}
+
+			public void Load()
+			{
+				this.FHasLoadBeenCalled = true;
+			}
+
+			public bool TestHit(Vector2D cursorInSlide)
+			{
+				var cursorInHitRegion3 = VMath.Inverse(this.Transform) * cursorInSlide;
+				var cursorInHitRegion = new Vector2D(cursorInHitRegion3.x, cursorInHitRegion3.y);
+
+				if (TestShape == Shape.Quad)
 				{
-					return Math.Abs(localCoordinates.x) <= 0.5
-						&& Math.Abs(localCoordinates.y) <= 0.5;
+					return Math.Abs(cursorInHitRegion.x) <= 0.5
+						&& Math.Abs(cursorInHitRegion.y) <= 0.5;
 				}
 				else if(TestShape == Shape.Circle)
 				{
-					return localCoordinates.LengthSquared < 0.25;
+					return cursorInHitRegion.LengthSquared < 0.25;
 				} else
 				{
 					//default
 					return false;
 				}
 			}
+
+			#region IDisposable Support
+			public void Dispose()
+			{
+
+			}
+			#endregion
 		}
 
 		#region fields & pins
