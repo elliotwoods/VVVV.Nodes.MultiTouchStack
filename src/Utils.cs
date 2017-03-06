@@ -77,15 +77,21 @@ namespace VVVV.Nodes.MultiTouchStack
 						+ Math.Sqrt(newTransform[1, 0] * newTransform[1, 0] + newTransform[1, 1] * newTransform[1, 1]);
 					scale /= 2.0f;
 
-					if (scale >= minimumScale && scale <= maximumScale)
+					if (scale > maximumScale)
 					{
-						transform = newTransform;
-						return true;
+						var scaleCorrection = maximumScale / scale;
+						transform = VMath.Scale(scaleCorrection, scaleCorrection, scaleCorrection) * transform;
+					} else if(scale < minimumScale)
+					{
+						var scaleCorrection = minimumScale / scale;
+						transform = VMath.Scale(scaleCorrection, scaleCorrection, scaleCorrection) * transform;
 					} else
 					{
-						return false;
+						transform = newTransform;
 					}
 				}
+
+				return true;
 			}
 
 			return false;
