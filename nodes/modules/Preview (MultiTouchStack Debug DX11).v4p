@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\Preview (MultiTouchStack Debug DX11).v4p" systemname="Preview (MultiTouchStack Debug)" filename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\Preview (MultiTouchStack Debug).v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\Preview (MultiTouchStack Debug DX11).v4p" systemname="Preview (MultiTouchStack Debug)" filename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\Preview (MultiTouchStack Debug).v4p">
    <BOUNDS type="Window" left="21468" top="14232" width="9000" height="6000">
    </BOUNDS>
    <PACK Name="addonpack" Version="35.0.0">
@@ -103,25 +103,25 @@
    </BOUNDS>
    <PIN pinname="Input Count" slicecount="1" values="3">
    </PIN>
-   <PIN pinname="Layer 1" visible="1">
+   <PIN pinname="Layer 1" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer Out" visible="1">
    </PIN>
-   <PIN pinname="Layer 3" visible="1">
+   <PIN pinname="Layer 3" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <LINK srcnodeid="10" srcpinname="Layer Out" dstnodeid="11" dstpinname="Layer 1" linkstyle="Bezier">
-   <LINKPOINT x="1296" y="3216">
-   </LINKPOINT>
-   <LINKPOINT x="3180" y="3216">
-   </LINKPOINT>
-   </LINK>
    <LINK srcnodeid="11" srcpinname="Layer Out" dstnodeid="9" dstpinname="Input Node">
    </LINK>
    <LINK srcnodeid="8" srcpinname="Layer Out" dstnodeid="11" dstpinname="Layer 3" linkstyle="Bezier">
    <LINKPOINT x="5064" y="3204">
    </LINKPOINT>
    <LINKPOINT x="3600" y="3204">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="10" srcpinname="Layer Out" dstnodeid="11" dstpinname="Layer 1" linkstyle="Bezier">
+   <LINKPOINT x="1296" y="3216">
+   </LINKPOINT>
+   <LINKPOINT x="3180" y="3216">
    </LINKPOINT>
    </LINK>
    </PATCH>

@@ -35,9 +35,12 @@ namespace VVVV.Nodes.MultiTouchStack
 		[Input("Tags", AutoValidate = false)]
 		public ISpread<ISpread<String>> FInTags;
 		
-		[Input("Minimum Scale", AutoValidate = false, DefaultValue = 0.1)]
-		public ISpread<Double> FInMinimumScale;
-		
+		[Input("Behavior", AutoValidate = false)]
+		public ISpread<Behaviors.IBehavior> FInBehavior;
+
+		[Input("Constraint", AutoValidate = false)]
+		public ISpread<Constraints.IConstraint> FInConstraint;
+
 		[Input("Maximum Scale", AutoValidate = false, DefaultValue = 100.0)]
 		public ISpread<Double> FInMaximumScale;
 		
@@ -74,8 +77,8 @@ namespace VVVV.Nodes.MultiTouchStack
 				FInRotation.Sync();
 				FInScale.Sync();
 				FInTags.Sync();
-				FInMinimumScale.Sync();
-				FInMaximumScale.Sync();
+				FInBehavior.Sync();
+				FInConstraint.Sync();
 				FInDragHitTestFunction.Sync();
 				FInHitEvents.Sync();
 
@@ -83,8 +86,8 @@ namespace VVVV.Nodes.MultiTouchStack
 					, FInRotation
 					, FInScale
 					, FInTags
-					, FInMinimumScale
-					, FInMaximumScale
+					, FInBehavior
+					, FInConstraint
 					, FInDragHitTestFunction
 					, FInHitEvents
 					, FInAdd);
@@ -104,8 +107,8 @@ namespace VVVV.Nodes.MultiTouchStack
 							* VMath.RotateZ(FInRotation[i])
 							* VMath.Translate(FInPosition[i].x, FInPosition[i].y, 0.0),
 						Tags = new List<String>(FInTags[i]),
-						MinimumScale = FInMinimumScale[i],
-						MaximumScale = FInMaximumScale[i],
+						Behaviour = FInBehavior[i],
+						Constraint = FInConstraint[i],
 						DragHitTestFunction = FInDragHitTestFunction[i],
 						HitEvents = new List<HitEvent>(FInHitEvents[i])
 					};

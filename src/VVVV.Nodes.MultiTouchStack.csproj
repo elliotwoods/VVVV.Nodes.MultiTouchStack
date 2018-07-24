@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\nodes\plugins\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG; </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -92,6 +92,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddSlideNode.cs" />
+    <Compile Include="Behaviors\Combined.cs" />
+    <Compile Include="Behaviors\FullMultitouch.cs" />
+    <Compile Include="Behaviors\Nodes.cs" />
+    <Compile Include="Behaviors\Rotate.cs" />
+    <Compile Include="Behaviors\Scale.cs" />
+    <Compile Include="Behaviors\Translate.cs" />
+    <Compile Include="Behaviors\IBehavior.cs" />
+    <Compile Include="Constraints\HitTest.cs" />
+    <Compile Include="Constraints\RotationRange.cs" />
+    <Compile Include="Constraints\ScaleRange.cs" />
+    <Compile Include="Constraints\TranslateRange.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="CursorSplitNode.cs" />
     <Compile Include="DeleteNode.cs" />
@@ -104,6 +115,7 @@
     <Compile Include="HitEvent.cs" />
     <Compile Include="HitEventJoinNode.cs" />
     <Compile Include="HitCallbackSplitNode.cs" />
+    <Compile Include="Constraints\IConstraint.cs" />
     <Compile Include="IHitTestFunction.cs" />
     <Compile Include="HitTestImageFileNode.cs" />
     <Compile Include="HitTestTransformNode.cs" />

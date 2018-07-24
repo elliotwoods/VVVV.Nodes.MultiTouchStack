@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewCursor (MultiTouchStack Debug DX11).v4p" systemname="PreviewCursor (MultiTouchStack Debug DX11)" filename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewCursor (MultiTouchStack Debug DX11).v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewCursor (MultiTouchStack Debug DX11).v4p" systemname="PreviewCursor (MultiTouchStack Debug DX11)" filename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewCursor (MultiTouchStack Debug DX11).v4p">
    <NODE systemname="Segment (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Segment (DX11.Geometry)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="1800" top="5364" width="100" height="100">
    </BOUNDS>
@@ -57,7 +57,7 @@
    </PIN>
    <PIN pinname="Layer Out" visible="1">
    </PIN>
-   <PIN pinname="Layer 2" visible="1">
+   <PIN pinname="Layer 2" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Input Count" slicecount="1" values="3">
    </PIN>
@@ -325,7 +325,7 @@
    </BOUNDS>
    <PIN pinname="VerticesXYZ" visible="1" slicecount="2" values="0,0">
    </PIN>
-   <PIN pinname="Vertices Bin Size" slicecount="1" values="-1">
+   <PIN pinname="Vertices Bin Size" slicecount="1" values="2" visible="1">
    </PIN>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
@@ -333,12 +333,14 @@
    <NODE systemname="Constant (DX11.Effect)" filename="%VVVV%\packs\dx11\nodes\dx11\Constant.fx" nodename="Constant (DX11.Effect)" componentmode="Hidden" id="47">
    <BOUNDS type="Node" left="3864" top="5988" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Geometry" visible="1">
+   <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
    <BOUNDS type="Box" left="3864" top="5988">
    </BOUNDS>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
    </NODE>
    <NODE systemname="Topology (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Topology (DX11.Geometry)" componentmode="Hidden" id="48">
    <BOUNDS type="Node" left="4188" top="4380" width="100" height="100">
@@ -351,20 +353,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="44" srcpinname="Geometry Out" dstnodeid="48" dstpinname="Geometry In">
-   </LINK>
-   <LINK srcnodeid="48" srcpinname="Geometry Out" dstnodeid="47" dstpinname="Geometry">
-   </LINK>
-   <LINK srcnodeid="18" srcpinname="Layer" dstnodeid="5" dstpinname="Layer 3" linkstyle="VHV">
-   <LINKPOINT x="6384" y="6468">
-   </LINKPOINT>
-   <LINKPOINT x="1908" y="6468">
-   </LINKPOINT>
-   </LINK>
-   <LINK srcnodeid="47" srcpinname="Layer" dstnodeid="5" dstpinname="Layer 2" linkstyle="VHV">
-   <LINKPOINT x="3864" y="6468">
-   </LINKPOINT>
-   <LINKPOINT x="1728" y="6468">
-   </LINKPOINT>
    </LINK>
    <NODE systemname="xyZ (3d XY)" nodename="xyZ (3d XY)" componentmode="Hidden" id="49">
    <BOUNDS type="Node" left="4188" top="3432" width="100" height="100">
@@ -415,5 +403,53 @@
    <LINK srcnodeid="23" srcpinname="Output" dstnodeid="24" dstpinname="Input 2">
    </LINK>
    <LINK srcnodeid="24" srcpinname="Output" dstnodeid="18" dstpinname="String">
+   </LINK>
+   <LINK srcnodeid="18" srcpinname="Layer" dstnodeid="5" dstpinname="Layer 3" linkstyle="VHV">
+   <LINKPOINT x="6384" y="6468">
+   </LINKPOINT>
+   <LINKPOINT x="1908" y="6468">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="47" srcpinname="Layer" dstnodeid="5" dstpinname="Layer 2" linkstyle="VHV">
+   <LINKPOINT x="3864" y="6468">
+   </LINKPOINT>
+   <LINKPOINT x="1728" y="6468">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="Switch (Node Input)" nodename="Switch (Node Input)" componentmode="Hidden" id="51">
+   <BOUNDS type="Node" left="4170" top="5450" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Switch" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Output" dstnodeid="47" dstpinname="Geometry">
+   </LINK>
+   <LINK srcnodeid="48" srcpinname="Geometry Out" dstnodeid="51" dstpinname="Input 2">
+   </LINK>
+   <NODE systemname="Count (Value)" nodename="Count (Value)" componentmode="Hidden" id="52">
+   <BOUNDS type="Node" left="3470" top="4360" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="49" srcpinname="XYZ" dstnodeid="52" dstpinname="Input">
+   </LINK>
+   <NODE systemname="GT (Value)" nodename="GT (Value)" componentmode="Hidden" id="53">
+   <BOUNDS type="Node" left="3470" top="4750" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="52" srcpinname="Count" dstnodeid="53" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Output" dstnodeid="51" dstpinname="Switch">
    </LINK>
    </PATCH>

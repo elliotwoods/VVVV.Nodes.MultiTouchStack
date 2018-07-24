@@ -97,7 +97,10 @@ namespace VVVV.Nodes.MultiTouchStack
 						case TestType.Alpha:
 							return (Double)color.A / (Double)Byte.MaxValue >= this.Threshold;
 						case TestType.Luminance:
-							return color.GetBrightness() >= (float)this.Threshold;
+							{
+								var brightness = color.GetBrightness();
+								return brightness >= (float)this.Threshold;
+							}
 						default:
 							return false;
 					}

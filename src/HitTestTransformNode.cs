@@ -52,7 +52,7 @@ namespace VVVV.Nodes.MultiTouchStack
 				}
 				else if(TestShape == Shape.Circle)
 				{
-					return cursorInHitRegion.LengthSquared < 0.25;
+					return cursorInHitRegion.LengthSquared <= 0.25;
 				} else
 				{
 					//default

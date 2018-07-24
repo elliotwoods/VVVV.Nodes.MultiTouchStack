@@ -30,11 +30,11 @@ namespace VVVV.Nodes.MultiTouchStack
 		[Output("Tags")]
 		public ISpread<ISpread<String>> FOutTags;
 
-		[Output("Minimum Scale", Visibility = PinVisibility.OnlyInspector)]
-		public ISpread<Double> FOutMinimumScale;
+		[Output("Behavior", Visibility = PinVisibility.OnlyInspector)]
+		public ISpread<Behaviors.IBehavior> FOutBehavior;
 
-		[Output("Maximum Scale", Visibility = PinVisibility.OnlyInspector)]
-		public ISpread<Double> FOutMaximumScale;
+		[Output("Constraint", Visibility = PinVisibility.OnlyInspector)]
+		public ISpread<Constraints.IConstraint> FOutConstraint;
 
 		[Output("Cursors Attached")]
 		public ISpread<ISpread<Cursor>> FOutCursorsAttached;
@@ -56,8 +56,8 @@ namespace VVVV.Nodes.MultiTouchStack
 
 			FOutIndex.SliceCount = SpreadMax;
 			FOutTransform.SliceCount = SpreadMax;
-			FOutMinimumScale.SliceCount = SpreadMax;
-			FOutMaximumScale.SliceCount = SpreadMax;
+			FOutBehavior.SliceCount = SpreadMax;
+			FOutConstraint.SliceCount = SpreadMax;
 			FOutTags.SliceCount = SpreadMax;
 			FOutCursorsAttached.SliceCount = SpreadMax;
 			FOutHitCallbacks.SliceCount = SpreadMax;
@@ -72,8 +72,8 @@ namespace VVVV.Nodes.MultiTouchStack
 
 				FOutIndex[i] = slide.Index;
 				FOutTransform[i] = transform;
-				FOutMinimumScale[i] = slide.MinimumScale;
-				FOutMaximumScale[i] = slide.MaximumScale;
+				FOutBehavior[i] = slide.Behaviour;
+				FOutConstraint[i] = slide.Constraint;
 				FOutTags[i].AssignFrom(slide.Tags);
 				FOutCursorsAttached[i].AssignFrom(slide.AttachedCursors);
 				FOutHitCallbacks[i].AssignFrom(slide.HitCallbacksThisFrame);

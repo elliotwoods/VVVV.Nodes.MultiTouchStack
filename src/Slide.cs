@@ -10,8 +10,8 @@ namespace VVVV.Nodes.MultiTouchStack {
 		public int Index;
 		public Matrix4x4 Transform;
 		public List<String> Tags;
-		public Double MinimumScale;
-		public Double MaximumScale;
+		public Behaviors.IBehavior Behaviour;
+		public Constraints.IConstraint Constraint;
 		public IHitTestFunction DragHitTestFunction;
 		public List<HitEvent> HitEvents;
 
@@ -39,7 +39,6 @@ namespace VVVV.Nodes.MultiTouchStack {
 				{
 					return this.Transform;
 				}
-				
 			}
 		}
 
@@ -60,23 +59,49 @@ namespace VVVV.Nodes.MultiTouchStack {
 			}
 		}
 
+		/// <summary>
+		/// Perform any multi-touch actions
+		/// </summary>
 		public void Update()
 		{
-			var movementOccured = Utils.MultitouchTransform(ref this.Transform, this.AttachedCursors, this.MinimumScale, this.MaximumScale);
-
-			//if movement occurred, ensure we are within canvas limits
-			if(movementOccured)
+			if (this.AttachedCursors.Count > 0)
 			{
-				World world;
-				if(this.World.TryGetTarget(out world))
+				// Find the behavior for the multitouch action
+				var behaviorChain = this.Behaviour;
+				if (behaviorChain == null)
 				{
-					var width = world.Settings.CanvasSize.x;
-					var height = world.Settings.CanvasSize.y;
-
-					this.Transform[3, 0] = VMath.Clamp(this.Transform[3, 0], -width, width);
-					this.Transform[3, 1] = VMath.Clamp(this.Transform[3, 1], -height, height);
+					//default to full multitouch
+					behaviorChain = Behaviors.FullMultitouchNode.PrincipalBehavior;
 				}
-	
+
+				// Setup the arguments to perform the action
+				var performArguments = new Behaviors.PerformArguments
+				{
+					Cursors = this.AttachedCursors
+				};
+
+				// Add a constraint function if there is one
+				if (this.Constraint != null)
+				{
+					var checkConstraintArguments = new Constraints.CheckConstraintArguments
+					{
+						Slide = this
+					};
+
+					performArguments.Validate = (Matrix4x4 transform) =>
+					{
+						return this.Constraint.CheckConstraint(transform, checkConstraintArguments);
+					};
+				}
+
+				// Perform the behavior chain
+				{
+					Matrix4x4 newTransform;
+					if (behaviorChain.PerformAndTest(performArguments, this.Transform, out newTransform))
+					{
+						this.Transform = newTransform;
+					}
+				}
 			}
 		}
 
