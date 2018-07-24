@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\HitTest (MultiTouchStack ImageFile) help.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="24156" top="9180" width="14784" height="11952">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\HitTest (MultiTouchStack ImageFile) help.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="16490" top="5640" width="14780" height="11950">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="228" top="228" width="5100" height="456">
@@ -259,7 +259,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="1068" top="10560" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="2376" top="9708" width="9900" height="9648">
+   <BOUNDS type="Window" left="6560" top="5650" width="9900" height="9640">
    </BOUNDS>
    <PIN pinname="Layers" visible="1" pintype="Input">
    </PIN>

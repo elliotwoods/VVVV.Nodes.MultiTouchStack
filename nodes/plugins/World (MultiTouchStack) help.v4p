@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\World (MultiTouchStack) help.v4p" locked="0" scrollx="0" scrolly="0">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\World (MultiTouchStack) help.v4p" locked="0" scrollx="0" scrolly="0">
    <BOUNDS type="Window" left="16608" top="6024" width="12324" height="10572">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -207,7 +207,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="624" top="8328" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="2376" top="9708" width="9900" height="9648">
+   <BOUNDS type="Window" left="6610" top="6000" width="9900" height="9640">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -346,8 +346,4 @@
    </NODE>
    <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="37" dstpinname="ScaleXY">
    </LINK>
-   <NODE systemname="HitTest (MultiTouchStack Transform)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="HitTest (MultiTouchStack Transform)" componentmode="Hidden" id="40">
-   <BOUNDS type="Node" left="6384" top="5256" width="100" height="100">
-   </BOUNDS>
-   </NODE>
    </PATCH>
