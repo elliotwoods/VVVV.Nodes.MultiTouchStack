@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
    <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\HitTest (MultiTouchStack ImageFile) help.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="16490" top="5640" width="14780" height="11950">
+   <BOUNDS type="Window" left="16490" top="5640" width="9890" height="11950">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="228" top="228" width="5100" height="456">
@@ -485,7 +485,7 @@
    </LINKPOINT>
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="28">
-   <BOUNDS type="Box" left="5280" top="2220" width="7248" height="708">
+   <BOUNDS type="Box" left="5280" top="2220" width="3950" height="780">
    </BOUNDS>
    <BOUNDS type="Node" left="5280" top="2220" width="0" height="0">
    </BOUNDS>

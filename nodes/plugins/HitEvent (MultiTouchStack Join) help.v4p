@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\HitEvent (MultiTouchStack Join) help.v4p" scrollx="0" scrolly="720">
-   <BOUNDS type="Window" left="17940" top="8124" width="17544" height="15672">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\HitEvent (MultiTouchStack Join) help.v4p" scrollx="0" scrolly="720">
+   <BOUNDS type="Window" left="16160" top="3730" width="17540" height="15670">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="228" top="228" width="5100" height="456">
@@ -205,7 +205,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="288" top="13908" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="2376" top="9708" width="9900" height="9648">
+   <BOUNDS type="Window" left="6350" top="3740" width="9900" height="9640">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -856,4 +856,18 @@
    </LINK>
    <LINK srcnodeid="63" srcpinname="Output" dstnodeid="61" dstpinname="Delete">
    </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="64">
+   <BOUNDS type="Node" left="4090" top="13710" width="1370" height="230">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4090" top="13710" width="1370" height="230">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|multitouch debug|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
    </PATCH>

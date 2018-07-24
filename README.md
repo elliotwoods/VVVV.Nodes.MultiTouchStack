@@ -1,5 +1,7 @@
 # Introduction
 
+![main-animation](https://raw.githubusercontent.com/elliotwoods/VVVV.Nodes.MultiTouchStack/master/readme/main-animation.gif)
+
 The MultiTouch Stack is an engine for VVVV which manages a set of slides that the user can manipulate with multitouch gestures, e.g. drag/pinch/spin.
 
 Functionality is split between nodes to help the developer design their own usage. The `World` node keeps track of all the slides in the stack (we often interchangeably use the terms 'stack' and 'world').
