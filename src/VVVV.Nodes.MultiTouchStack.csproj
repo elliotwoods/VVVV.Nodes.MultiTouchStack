@@ -99,6 +99,8 @@
     <Compile Include="Behaviors\Scale.cs" />
     <Compile Include="Behaviors\Translate.cs" />
     <Compile Include="Behaviors\IBehavior.cs" />
+    <Compile Include="Behaviors\TranslateY.cs" />
+    <Compile Include="Behaviors\TranslateX.cs" />
     <Compile Include="Constraints\HitTest.cs" />
     <Compile Include="Constraints\RotationRange.cs" />
     <Compile Include="Constraints\ScaleRange.cs" />

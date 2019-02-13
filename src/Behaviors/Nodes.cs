@@ -53,4 +53,10 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 
 	[PluginInfo(Name = "Translate", Category = "MultiTouchStack", Version = "Behaviors", Author = "elliotwoods")]
 	public class TranslateNode : BehaviorNode<Translate> { }
+
+	[PluginInfo(Name = "TranslateX", Category = "MultiTouchStack", Version = "Behaviors", Author = "elliotwoods")]
+	public class TranslateXNode : BehaviorNode<TranslateX> { }
+
+	[PluginInfo(Name = "TranslateY", Category = "MultiTouchStack", Version = "Behaviors", Author = "elliotwoods")]
+	public class TranslateYNode : BehaviorNode<TranslateY> { }
 }
