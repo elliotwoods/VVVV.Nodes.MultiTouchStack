@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\Delete (MultiTouchStack) help.v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\Delete (MultiTouchStack) help.v4p">
    <BOUNDS type="Window" left="15396" top="5496" width="9960" height="9660">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -40,22 +40,6 @@
    <PIN pinname="Cursor Index" visible="1">
    </PIN>
    <PIN pinname="Reset" visible="1">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="22">
-   <BOUNDS type="Box" left="1032" top="5220" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="1032" top="5220" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Bang">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Success">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="21">
@@ -195,8 +179,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="23" srcpinname="World" dstnodeid="8" dstpinname="World">
-   </LINK>
-   <LINK srcnodeid="8" srcpinname="Success" dstnodeid="22" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="21" srcpinname="Y Output Value" dstnodeid="8" dstpinname="Add">
    </LINK>

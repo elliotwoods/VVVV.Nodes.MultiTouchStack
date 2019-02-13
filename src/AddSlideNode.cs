@@ -41,9 +41,6 @@ namespace VVVV.Nodes.MultiTouchStack
 		[Input("Constraint", AutoValidate = false)]
 		public ISpread<Constraints.IConstraint> FInConstraint;
 
-		[Input("Maximum Scale", AutoValidate = false, DefaultValue = 100.0)]
-		public ISpread<Double> FInMaximumScale;
-		
 		[Input("Drag Hit Test", AutoValidate = false)]
 		public ISpread<IHitTestFunction> FInDragHitTestFunction;
 		

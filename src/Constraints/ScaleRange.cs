@@ -30,7 +30,7 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 				, out rotation
 				, out translation);
 
-			return this.Constraint.CheckConstraint(transform, checkConstraintArguments);
+			return Math.Min(scale.x, scale.y) >= this.Minimum && Math.Max(scale.x, scale.y) <= this.Maximum;
 		}
 	}
 

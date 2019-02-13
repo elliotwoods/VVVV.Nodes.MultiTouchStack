@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\HitTest (MultiTouchStack Constraints) help.v4p" scrollx="10" scrolly="10">
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\HitTest (MultiTouchStack Constraints) help.v4p" scrollx="0" scrolly="0">
    <BOUNDS type="Window" left="16280" top="6340" width="13030" height="11290">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -271,9 +271,9 @@
    <LINK srcnodeid="23" srcpinname="Texture Out" dstnodeid="22" dstpinname="Texture In">
    </LINK>
    <NODE systemname="HitTest (MultiTouchStack ImageFile)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="HitTest (MultiTouchStack ImageFile)" componentmode="Hidden" id="26">
-   <BOUNDS type="Node" left="6100" top="3380" width="100" height="100">
+   <BOUNDS type="Node" left="6748" top="2600" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="6100" top="3380" width="2000" height="2000">
+   <BOUNDS type="Box" left="6748" top="2600" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -359,9 +359,9 @@
    <LINK srcnodeid="17" srcpinname="Output Node" dstnodeid="31" dstpinname="Input">
    </LINK>
    <NODE systemname="HitTest (MultiTouchStack Transform)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="HitTest (MultiTouchStack Transform)" componentmode="Hidden" id="32">
-   <BOUNDS type="Node" left="7150" top="3470" width="100" height="100">
+   <BOUNDS type="Node" left="7006" top="3914" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="7150" top="3470" width="2000" height="2000">
+   <BOUNDS type="Box" left="7006" top="3914" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -371,9 +371,9 @@
    <LINK srcnodeid="32" srcpinname="Output" dstnodeid="5" dstpinname="Drag Hit Test">
    </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="33">
-   <BOUNDS type="Box" left="7720" top="2970" width="830" height="240">
+   <BOUNDS type="Box" left="7612" top="3522" width="830" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="7720" top="2970" width="0" height="0">
+   <BOUNDS type="Node" left="7612" top="3522" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="1" visible="1" values="Circle">
    </PIN>
@@ -405,9 +405,9 @@
    </LINKPOINT>
    </LINK>
    <NODE systemname="HitTest (MultiTouchStack Constraints)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="HitTest (MultiTouchStack Constraints)" componentmode="Hidden" id="25">
-   <BOUNDS type="Node" left="6110" top="3920" width="100" height="100">
+   <BOUNDS type="Node" left="6446" top="3068" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="6110" top="3920" width="2000" height="2000">
+   <BOUNDS type="Box" left="6446" top="3068" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Hit Test Function" visible="1">
    </PIN>

@@ -10,15 +10,15 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 {
 	class RotationRange : IConstraint
 	{
-		public IConstraint Constraint = null;
+		public IConstraint UpstreamConstraint = null;
 		public double Minimum;
 		public double Maximum;
 
 		public bool CheckConstraint(Matrix4x4 transform, CheckConstraintArguments checkConstraintArguments)
 		{
-			if(this.Constraint != null)
+			if(this.UpstreamConstraint != null)
 			{
-				if(!this.Constraint.CheckConstraint(transform, checkConstraintArguments))
+				if(!this.UpstreamConstraint.CheckConstraint(transform, checkConstraintArguments))
 				{
 					return false;
 				}
@@ -57,7 +57,7 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 		{
 			FOutput[0] = new RotationRange
 			{
-				Constraint = this.FInConstraint[0],
+				UpstreamConstraint = this.FInConstraint[0],
 				Minimum = this.FInMinimum[0],
 				Maximum = this.FInMaximum[0]
 			};

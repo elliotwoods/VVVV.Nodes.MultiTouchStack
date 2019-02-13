@@ -23,8 +23,8 @@ namespace VVVV.Nodes.MultiTouchStack {
 		}
 
 		// keep alive any objects we're attached to even after they're removed from the World until Cursor dies
-		public Slide AssignedSlide; 
-		public HitEvent AssignedHitEvent; 
+		public Slide AssignedSlide;
+		public HitEvent AssignedHitEvent;
 
 		DateTime FBirthTime = DateTime.Now;
 	}

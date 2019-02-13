@@ -25,13 +25,13 @@
    </PIN>
    </NODE>
    <NODE id="8" systemname="HitTest (MultiTouchStack ImageFile)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="HitTest (MultiTouchStack ImageFile)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
-   <BOUNDS type="Node" left="5388" top="3970" width="100" height="100">
+   <BOUNDS type="Node" left="5268" top="3970" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Output" visible="1" pintype="Output">
    </PIN>
    <PIN pinname="Shape" visible="1" slicecount="1" values="Quad">
    </PIN>
-   <BOUNDS type="Box" left="120" top="970" width="2400" height="1800">
+   <BOUNDS type="Box" left="0" top="970" width="2400" height="1800">
    </BOUNDS>
    <BOUNDS type="Window" left="0" top="0" width="6000" height="4500">
    </BOUNDS>
@@ -407,9 +407,9 @@
    </LINKPOINT>
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="28">
-   <BOUNDS type="Box" left="5390" top="2210" width="3950" height="780">
+   <BOUNDS type="Box" left="5270" top="2210" width="3950" height="780">
    </BOUNDS>
-   <BOUNDS type="Node" left="5390" top="2210" width="0" height="0">
+   <BOUNDS type="Node" left="5270" top="2210" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input String" slicecount="3" visible="1" values="|.\help assets\blob 1.png|,|.\help assets\blob 2.png|,|.\help assets\blob 3.png|">
    </PIN>
@@ -471,9 +471,9 @@
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="28" srcpinname="Output String" dstnodeid="27" dstpinname="Tags" linkstyle="Bezier">
-   <LINKPOINT x="5353" y="3965">
+   <LINKPOINT x="5273" y="3965">
    </LINKPOINT>
-   <LINKPOINT x="3073" y="3969">
+   <LINKPOINT x="3033" y="3969">
    </LINKPOINT>
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="59">

@@ -1,0 +1,355 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\ScaleRange (MultiTouchStack Constraints) help.v4p">
+   <BOUNDS type="Window" left="17568" top="5676" width="13968" height="11064">
+   </BOUNDS>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
+   <BOUNDS type="Node" left="228" top="228" width="5100" height="456">
+   </BOUNDS>
+   <BOUNDS type="Box" left="228" top="228" width="5100" height="456">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|ScaleRange (MultiTouchStack Constraints)|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" visible="1" values="14">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="2">
+   <BOUNDS type="Node" left="228" top="600" width="5100" height="600">
+   </BOUNDS>
+   <BOUNDS type="Box" left="228" top="600" width="5100" height="600">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|Here we apply 2 constraints to the movement of the slide:&cr;&lf;- ScaleRange : Set the minimum and maximum scale of the slide&cr;&lf;- TranslateRange : Set the bounds where the slide can be positioned|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   </NODE>
+   <NODE nodename="World (MultiTouchStack)" componentmode="Hidden" id="25">
+   <BOUNDS type="Node" left="1368" top="3478" width="3720" height="276">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1368" top="3478" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="World" visible="1">
+   </PIN>
+   <PIN pinname="Slides" visible="1">
+   </PIN>
+   <PIN pinname="Cursor PositionXY" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Cursor ID" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Cursor Index" visible="1">
+   </PIN>
+   <PIN pinname="Reset" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="24">
+   <BOUNDS type="Box" left="1368" top="5890" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1368" top="5890" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Success">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="23">
+   <BOUNDS type="Box" left="7648" top="4016" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7648" top="4016" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Add">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE systemname="TouchSimulator (MultiTouchStack Debug)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\TouchSimulator (MultiTouchStack Debug).v4p" nodename="TouchSimulator (MultiTouchStack Debug)" componentmode="Hidden" id="22">
+   <BOUNDS type="Node" left="1776" top="2014" width="1704" height="276">
+   </BOUNDS>
+   <PIN pinname="PositionXY" visible="1">
+   </PIN>
+   <BOUNDS type="Window" left="16884" top="6144" width="13332" height="10824">
+   </BOUNDS>
+   <PIN pinname="Cursor ID" visible="1">
+   </PIN>
+   <PIN pinname="Cursor Position XY" visible="1">
+   </PIN>
+   <PIN pinname="Mouse Layer" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Preview (MultiTouchStack Debug DX11)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\Preview (MultiTouchStack Debug DX11).v4p" nodename="Preview (MultiTouchStack Debug DX11)" componentmode="Hidden" id="21">
+   <BOUNDS type="Node" left="1380" top="8754" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="World" visible="1">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="20">
+   <BOUNDS type="Node" left="1032" top="9738" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1032" top="9738" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="6720" top="6450" width="9900" height="9640">
+   </BOUNDS>
+   <PIN pinname="Layers" visible="1">
+   </PIN>
+   <PIN pinname="AA Samples per Pixel" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Depth Buffer Mode" slicecount="1" values="Standard">
+   </PIN>
+   <PIN pinname="Depth Buffer Format" slicecount="1" values="D32_Float">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="25" srcpinname="World" dstnodeid="21" dstpinname="World" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Cursor ID" dstnodeid="25" dstpinname="Cursor ID" linkstyle="Bezier">
+   <LINKPOINT x="1856" y="2856">
+   </LINKPOINT>
+   <LINKPOINT x="1300" y="2828">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Cursor Position XY" dstnodeid="25" dstpinname="Cursor PositionXY">
+   </LINK>
+   <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="19">
+   <BOUNDS type="Node" left="1200" top="9234" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer 1" visible="1">
+   </PIN>
+   <PIN pinname="Layer 2" visible="1">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   <PIN pinname="Input Count" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Layer 3" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="21" srcpinname="Layer Out" dstnodeid="19" dstpinname="Layer 1">
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Mouse Preview Layer" dstnodeid="19" dstpinname="Layer 2" linkstyle="Bezier" hiddenwhenlocked="1">
+   <LINKPOINT x="3276" y="6223">
+   </LINKPOINT>
+   <LINKPOINT x="2424" y="5289">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="19" srcpinname="Layer Out" dstnodeid="20" dstpinname="Layers">
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Cursor ID" dstnodeid="25" dstpinname="Cursor Index" linkstyle="Bezier">
+   <LINKPOINT x="1788" y="2884">
+   </LINKPOINT>
+   <LINKPOINT x="1392" y="2884">
+   </LINKPOINT>
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="18">
+   <BOUNDS type="Box" left="5040" top="1990" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5040" top="1990" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Reset">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="18" srcpinname="Y Output Value" dstnodeid="25" dstpinname="Reset">
+   </LINK>
+   <NODE systemname="AddSlide (MultiTouchStack Transform)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="AddSlide (MultiTouchStack Transform)" componentmode="Hidden" id="17">
+   <BOUNDS type="Node" left="1368" top="5278" width="6348" height="276">
+   </BOUNDS>
+   <PIN pinname="ScaleXY" visible="1">
+   </PIN>
+   <PIN pinname="Behavior" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Constraint" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="25" srcpinname="World" dstnodeid="17" dstpinname="World">
+   </LINK>
+   <LINK srcnodeid="17" srcpinname="Success" dstnodeid="24" dstpinname="Y Input Value">
+   </LINK>
+   <LINK srcnodeid="23" srcpinname="Y Output Value" dstnodeid="17" dstpinname="Add">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16">
+   <BOUNDS type="Box" left="3092" top="4502" width="792" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3092" top="4502" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0.5,0.5">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="16" srcpinname="Y Output Value" dstnodeid="17" dstpinname="ScaleXY">
+   </LINK>
+   <NODE systemname="FullMultitouch (MultiTouchStack Behaviors)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="FullMultitouch (MultiTouchStack Behaviors)" componentmode="Hidden" id="12">
+   <BOUNDS type="Node" left="4794" top="4670" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4794" top="4670" width="2000" height="2000">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Fall Back" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="12" srcpinname="Output" dstnodeid="17" dstpinname="Behavior">
+   </LINK>
+   <NODE systemname="Translate (MultiTouchStack Behaviors)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="Translate (MultiTouchStack Behaviors)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="6380" top="3784" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6380" top="3784" width="2000" height="2000">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="ScaleRange (MultiTouchStack Constraints)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="ScaleRange (MultiTouchStack Constraints)" componentmode="Hidden" id="15">
+   <BOUNDS type="Node" left="9838" top="4560" width="1530" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9838" top="4560" width="2000" height="2000">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Hit Test Function" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Constraint" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Minimum" visible="1">
+   </PIN>
+   <PIN pinname="Maximum" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="15" srcpinname="Output" dstnodeid="17" dstpinname="Constraint" linkstyle="VHV">
+   <LINKPOINT x="9842" y="5050">
+   </LINKPOINT>
+   <LINKPOINT x="5092" y="5050">
+   </LINKPOINT>
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="28">
+   <BOUNDS type="Box" left="10584" top="3708" width="792" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10584" top="3708" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.5">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Minimum">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="28" srcpinname="Y Output Value" dstnodeid="15" dstpinname="Minimum">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="29">
+   <BOUNDS type="Box" left="11316" top="4092" width="792" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11316" top="4092" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.8">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Maximum">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="29" srcpinname="Y Output Value" dstnodeid="15" dstpinname="Maximum">
+   </LINK>
+   <PACK Name="addonpack" Version="35.0.0">
+   </PACK>
+   <NODE systemname="TranslateRange (MultiTouchStack Constraints)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="TranslateRange (MultiTouchStack Constraints)" componentmode="Hidden" id="31">
+   <BOUNDS type="Node" left="9840" top="2688" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9840" top="2688" width="2400" height="2400">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="MinimumXY" visible="1">
+   </PIN>
+   <PIN pinname="MaximumXY" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="31" srcpinname="Output" dstnodeid="15" dstpinname="Constraint">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="32">
+   <BOUNDS type="Box" left="10428" top="1644" width="792" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10428" top="1644" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="-0.5,-0.5">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="32" srcpinname="Y Output Value" dstnodeid="31" dstpinname="MinimumXY">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="33">
+   <BOUNDS type="Box" left="11424" top="1644" width="792" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11424" top="1644" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0.5,0.5">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="33" srcpinname="Y Output Value" dstnodeid="31" dstpinname="MaximumXY">
+   </LINK>
+   <NODE systemname="Rotate (MultiTouchStack Behaviors)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="Rotate (MultiTouchStack Behaviors)" componentmode="Hidden" id="34">
+   <BOUNDS type="Node" left="5832" top="4188" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5832" top="4188" width="2400" height="2400">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Fall Back" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="34" srcpinname="Output" dstnodeid="12" dstpinname="Fall Back">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Output" dstnodeid="34" dstpinname="Fall Back">
+   </LINK>
+   </PATCH>
