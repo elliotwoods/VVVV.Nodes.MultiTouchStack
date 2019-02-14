@@ -14,18 +14,24 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 		public double Minimum;
 		public double Maximum;
 
-		public bool CheckConstraint(Matrix4x4 transform, CheckConstraintArguments checkConstraintArguments)
+		public bool CheckConstraint(Behaviors.ValidateFunctionArguments validateFunctionArguments, CheckConstraintArguments checkConstraintArguments)
 		{
 			if(this.UpstreamConstraint != null)
 			{
-				if(!this.UpstreamConstraint.CheckConstraint(transform, checkConstraintArguments))
+				if (!this.UpstreamConstraint.CheckConstraint(validateFunctionArguments, checkConstraintArguments))
 				{
 					return false;
 				}
 			}
 
+			if (!validateFunctionArguments.ActionsApplied.Contains(Behaviors.ActionsApplied.Rotate))
+			{
+				// Ignore if no rotation applied
+				return true;
+			}
+
 			Vector3D rotation, scale, translation;
-			Matrix4x4Utils.Decompose(transform
+			Matrix4x4Utils.Decompose(validateFunctionArguments.Transform
 				, out scale
 				, out rotation
 				, out translation);

@@ -14,6 +14,6 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 
 	public interface IConstraint
 	{
-		bool CheckConstraint(Matrix4x4 transform, CheckConstraintArguments checkConstraintArguments);
+		bool CheckConstraint(Behaviors.ValidateFunctionArguments validateFunctionArguments, CheckConstraintArguments checkConstraintArguments);
 	}
 }

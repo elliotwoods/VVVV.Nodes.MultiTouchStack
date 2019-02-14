@@ -10,22 +10,28 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 {
 	class TranslateRange : IConstraint
 	{
-		public IConstraint Constraint = null;
+		public IConstraint UpstreamConstraint = null;
 		public Vector2D Minimum;
 		public Vector2D Maximum;
 
-		public bool CheckConstraint(Matrix4x4 transform, CheckConstraintArguments checkConstraintArguments)
+		public bool CheckConstraint(Behaviors.ValidateFunctionArguments validateFunctionArguments, CheckConstraintArguments checkConstraintArguments)
 		{
-			if (this.Constraint != null)
+			if (this.UpstreamConstraint != null)
 			{
-				if (!this.Constraint.CheckConstraint(transform, checkConstraintArguments))
+				if (!this.UpstreamConstraint.CheckConstraint(validateFunctionArguments, checkConstraintArguments))
 				{
 					return false;
 				}
 			}
 
+			if (!validateFunctionArguments.ActionsApplied.Contains(Behaviors.ActionsApplied.Translate))
+			{
+				// Ignore if no translate applied
+				return true;
+			}
+
 			Vector3D rotation, scale, translation;
-			Matrix4x4Utils.Decompose(transform
+			Matrix4x4Utils.Decompose(validateFunctionArguments.Transform
 				, out scale
 				, out rotation
 				, out translation);
@@ -36,10 +42,7 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 				&& translation2.y >= this.Minimum.y
 				&& translation2.x <= this.Maximum.x
 				&& translation2.y <= this.Maximum.y;
-			if (this.Constraint != null)
-			{
-				result &= this.Constraint.CheckConstraint(transform, checkConstraintArguments);
-			}
+			
 			return result;
 		}
 	}
@@ -66,7 +69,7 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 		{
 			FOutput[0] = new TranslateRange
 			{
-				Constraint = this.FInConstraint[0],
+				UpstreamConstraint = this.FInConstraint[0],
 				Minimum = this.FInMinimum[0],
 				Maximum = this.FInMaximum[0]
 			};

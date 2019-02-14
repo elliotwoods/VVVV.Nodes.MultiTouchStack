@@ -9,20 +9,22 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 {
 	public class TranslateX : IBehavior
 	{
-		public override Matrix4x4 Perform(Matrix4x4 transform, IEnumerable<Cursor> cursors)
+		public override Matrix4x4 Perform(Matrix4x4 transform, PerformArguments performArguments)
 		{
-			if (cursors.Count() < 1)
+			if (performArguments.Cursors.Count() < 1)
 			{
 				// Perform no action
 				throw new Exception();
 			}
 
+			performArguments.ActionsApplied.Add(ActionsApplied.Translate);
+
 			var totalTranslation = new Vector2D(0.0, 0.0);
-			foreach (var cursor in cursors)
+			foreach (var cursor in performArguments.Cursors)
 			{
 				totalTranslation += cursor.Movement;
 			}
-			var averageTranslation = totalTranslation / cursors.Count();
+			var averageTranslation = totalTranslation / performArguments.Cursors.Count();
 
 			return transform * VMath.Translate(averageTranslation.x, 0.0, 0.0);
 		}

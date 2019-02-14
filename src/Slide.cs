@@ -80,7 +80,7 @@ namespace VVVV.Nodes.MultiTouchStack {
 					Cursors = this.AttachedCursors
 				};
 
-				// Add a constraint function if there is one
+				// If we have constraints, add the settings to the performArguments
 				if (this.Constraint != null)
 				{
 					var checkConstraintArguments = new Constraints.CheckConstraintArguments
@@ -88,16 +88,16 @@ namespace VVVV.Nodes.MultiTouchStack {
 						Slide = this
 					};
 
-					performArguments.Validate = (Matrix4x4 transform) =>
+					performArguments.ValidateFunction = (Behaviors.ValidateFunctionArguments validateFunctionArguments) =>
 					{
-						return this.Constraint.CheckConstraint(transform, checkConstraintArguments);
+						return this.Constraint.CheckConstraint(validateFunctionArguments, checkConstraintArguments);
 					};
 				}
 
-				// Perform the behavior chain
+				// Perform the behavior chain (inside the chain it checks constraints if any)
 				{
 					Matrix4x4 newTransform;
-					if (behaviorChain.PerformAndTest(performArguments, this.Transform, out newTransform))
+					if (behaviorChain.PerformAndValidate(performArguments, this.Transform, out newTransform))
 					{
 						this.Transform = newTransform;
 					}

@@ -9,9 +9,9 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 {
 	public class FullMultitouch : IBehavior
 	{
-		public override Matrix4x4 Perform(Matrix4x4 transform, IEnumerable<Cursor> cursors)
+		public override Matrix4x4 Perform(Matrix4x4 transform, PerformArguments performArguments)
 		{
-			var cursorCount = cursors.Count();
+			var cursorCount = performArguments.Cursors.Count();
 
 			if (cursorCount < 1)
 			{
@@ -20,11 +20,15 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 			if (cursorCount < 2)
 			{
 				// revert to translate only
-				return TranslateNode.PrincipalBehavior.Perform(transform, cursors);
+				return TranslateNode.PrincipalBehavior.Perform(transform, performArguments);
 			}
 
+			performArguments.ActionsApplied.Add(ActionsApplied.Translate);
+			performArguments.ActionsApplied.Add(ActionsApplied.Rotate);
+			performArguments.ActionsApplied.Add(ActionsApplied.Scale);
+
 			//choose the cursors with the most movement
-			var cursorsSortedByMovement = cursors.OrderByDescending(cursor => cursor.Movement.LengthSquared).ToList();
+			var cursorsSortedByMovement = performArguments.Cursors.OrderByDescending(cursor => cursor.Movement.LengthSquared).ToList();
 
 			var cursor0Now = cursorsSortedByMovement[0].Position;
 			var cursor1Now = cursorsSortedByMovement[1].Position;

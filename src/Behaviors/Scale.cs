@@ -9,9 +9,9 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 {
 	public class Scale : IBehavior
 	{
-		public override Matrix4x4 Perform(Matrix4x4 transform, IEnumerable<Cursor> cursors)
+		public override Matrix4x4 Perform(Matrix4x4 transform, PerformArguments performArguments)
 		{
-			var cursorCount = cursors.Count();
+			var cursorCount = performArguments.Cursors.Count();
 
 			if (cursorCount < 2)
 			{
@@ -19,8 +19,11 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 				throw new Exception();
 			}
 
+			performArguments.ActionsApplied.Add(ActionsApplied.Translate);
+			performArguments.ActionsApplied.Add(ActionsApplied.Scale);
+
 			// We split the cursors in half, the half with the largest movement are the rotation, the half with the lowest movement are the pivot
-			var cursorsSortedByMovement = cursors.OrderBy(cursor => cursor.Movement.LengthSquared).ToList();
+			var cursorsSortedByMovement = performArguments.Cursors.OrderBy(cursor => cursor.Movement.LengthSquared).ToList();
 
 			var cursorCountForPivot = cursorCount / 2;
 			var cursorsForPivot = cursorsSortedByMovement.GetRange(0, cursorCountForPivot);

@@ -9,12 +9,12 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 {
 	public class Rotate : IBehavior
 	{
-		public override Matrix4x4 Perform(Matrix4x4 transform, IEnumerable<Cursor> cursors)
+		public override Matrix4x4 Perform(Matrix4x4 transform, PerformArguments performArguments)
 		{
-			var cursorCount = cursors.Count();
+			var cursorCount = performArguments.Cursors.Count();
 
 			// We split the cursors in half, the half with the largest movement are the rotation, the half with the lowest movement are the pivot
-			var cursorsSortedByMovement = cursors.OrderBy(cursor => cursor.Movement.LengthSquared).ToList();
+			var cursorsSortedByMovement = performArguments.Cursors.OrderBy(cursor => cursor.Movement.LengthSquared).ToList();
 
 			var cursorCountForPivot = (int) Math.Ceiling((double) cursorCount / 2);
 			var cursorsForPivot = cursorsSortedByMovement.GetRange(0, cursorCountForPivot);
@@ -47,10 +47,16 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 			
 			if(cursorsForPivot.Count > 0)
 			{
-				// Perform translation with the pivot points
-				newTransform = TranslateNode.PrincipalBehavior.Perform(newTransform, cursorsForPivot);
+				// Perform translation with the movement of the pivot points
+				newTransform = TranslateNode.PrincipalBehavior.Perform(newTransform, new PerformArguments
+				{
+					Cursors = cursorsForPivot
+					// We don't pass the Validate function since we dont need to test inside
+				});
 			}
 
+			performArguments.ActionsApplied.Add(ActionsApplied.Translate);
+			performArguments.ActionsApplied.Add(ActionsApplied.Rotate);
 
 			return newTransform;
 		}

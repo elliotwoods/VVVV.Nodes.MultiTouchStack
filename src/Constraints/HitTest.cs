@@ -12,15 +12,15 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 {
 	public class HitTest : IConstraint
 	{
-		public IConstraint Constraint = null;
+		public IConstraint UpstreamConstraint = null;
 		public IHitTestFunction HitTestFunction = null;
 		public int Resolution;
 
-		public bool CheckConstraint(Matrix4x4 transform, CheckConstraintArguments checkConstraintArguments)
+		public bool CheckConstraint(Behaviors.ValidateFunctionArguments validateFunctionArguments, CheckConstraintArguments checkConstraintArguments)
 		{
-			if (this.Constraint != null)
+			if (this.UpstreamConstraint != null)
 			{
-				if (!this.Constraint.CheckConstraint(transform, checkConstraintArguments))
+				if (!this.UpstreamConstraint.CheckConstraint(validateFunctionArguments, checkConstraintArguments))
 				{
 					return false;
 				}
@@ -50,7 +50,7 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 					if (checkConstraintArguments.Slide.DragHitTest(localCoordinate))
 					{
 						var localCoordinate3 = new Vector3D(localCoordinate);
-						var worldCoordinate3 = transform * localCoordinate3;
+						var worldCoordinate3 = validateFunctionArguments.Transform * localCoordinate3;
 						var worldCoordinate = new Vector2D(worldCoordinate3.x, worldCoordinate3.y);
 						worldCoordinates.Add(worldCoordinate);
 					}
@@ -99,7 +99,7 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 		{
 			FOutput[0] = new HitTest
 			{
-				Constraint = this.FInConstraint[0],
+				UpstreamConstraint = this.FInConstraint[0],
 				HitTestFunction = this.FInHitTestFunction[0],
 				Resolution = this.FInResolution[0]
 			};

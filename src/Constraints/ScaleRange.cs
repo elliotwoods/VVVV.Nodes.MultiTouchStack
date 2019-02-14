@@ -10,22 +10,28 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 {
 	class ScaleRange : IConstraint
 	{
-		public IConstraint Constraint = null;
+		public IConstraint UpstreamConstraint = null;
 		public double Minimum;
 		public double Maximum;
 
-		public bool CheckConstraint(Matrix4x4 transform, CheckConstraintArguments checkConstraintArguments)
+		public bool CheckConstraint(Behaviors.ValidateFunctionArguments validateFunctionArguments, CheckConstraintArguments checkConstraintArguments)
 		{
-			if (this.Constraint != null)
+			if (this.UpstreamConstraint != null)
 			{
-				if (!this.Constraint.CheckConstraint(transform, checkConstraintArguments))
+				if (!this.UpstreamConstraint.CheckConstraint(validateFunctionArguments, checkConstraintArguments))
 				{
 					return false;
 				}
 			}
 
+			if (!validateFunctionArguments.ActionsApplied.Contains(Behaviors.ActionsApplied.Scale))
+			{
+				// Ignore if no scale applied
+				return true;
+			}
+
 			Vector3D rotation, scale, translation;
-			Matrix4x4Utils.Decompose(transform
+			Matrix4x4Utils.Decompose(validateFunctionArguments.Transform
 				, out scale
 				, out rotation
 				, out translation);
@@ -57,7 +63,7 @@ namespace VVVV.Nodes.MultiTouchStack.Constraints
 		{
 			FOutput[0] = new ScaleRange
 			{
-				Constraint = this.FInConstraint[0],
+				UpstreamConstraint = this.FInConstraint[0],
 				Minimum = this.FInMinimum[0],
 				Maximum = this.FInMaximum[0]
 			};

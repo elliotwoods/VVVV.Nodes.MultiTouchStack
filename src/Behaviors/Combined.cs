@@ -13,19 +13,19 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 		public IBehavior AlsoTry = null;
 		public IBehavior Fallback = null;
 
-		public override bool PerformAndTest(PerformArguments performArguments, Matrix4x4 priorTransform, out Matrix4x4 newTransform)
+		public override bool PerformAndValidate(PerformArguments performArguments, Matrix4x4 priorTransform, out Matrix4x4 newTransform)
 		{
 			bool success = false;
 			newTransform = priorTransform;
 
 			if (this.Principal != null)
 			{
-				success |= this.Principal.PerformAndTest(performArguments, newTransform, out newTransform);
+				success |= this.Principal.PerformAndValidate(performArguments, newTransform, out newTransform);
 			}
 
 			if (this.AlsoTry != null)
 			{
-				success |= this.AlsoTry.PerformAndTest(performArguments, newTransform, out newTransform);
+				success |= this.AlsoTry.PerformAndValidate(performArguments, newTransform, out newTransform);
 			}
 
 			if (!success)
@@ -33,7 +33,7 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 				// Neither the principal or the AlsoTry succeeded, try the fall-back action
 				if (this.Fallback != null)
 				{
-					success |= this.Fallback.PerformAndTest(performArguments, newTransform, out newTransform);
+					success |= this.Fallback.PerformAndValidate(performArguments, newTransform, out newTransform);
 				}
 			}
 
