@@ -104,7 +104,7 @@ namespace VVVV.Nodes.MultiTouchStack
 							* VMath.RotateZ(FInRotation[i])
 							* VMath.Translate(FInPosition[i].x, FInPosition[i].y, 0.0),
 						Tags = new List<String>(FInTags[i]),
-						Behaviour = FInBehavior[i],
+						Behavior = FInBehavior[i],
 						Constraint = FInConstraint[i],
 						DragHitTestFunction = FInDragHitTestFunction[i],
 						HitEvents = new List<HitEvent>(FInHitEvents[i])

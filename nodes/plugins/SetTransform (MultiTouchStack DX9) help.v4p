@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\SetTransform (MultiTouchStack DX9) help.v4p" scrollx="0" scrolly="0" systemname="SetTransform (MultiTouchStack DX9) help" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\SetTransform (MultiTouchStack DX9) help.v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\SetTransform (MultiTouchStack DX9) help.v4p" scrollx="0" scrolly="0" systemname="SetTransform (MultiTouchStack DX9) help" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\SetTransform (MultiTouchStack DX9) help.v4p">
    <BOUNDS type="Window" left="16695" top="2940" width="10230" height="10590">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3" systemname="IOBox (String)">
@@ -30,22 +30,6 @@
    <PIN pinname="Cursor Index" visible="1">
    </PIN>
    <PIN pinname="Reset" visible="1">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="17" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="888" top="4920" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="888" top="4920" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Bang">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Success">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16" systemname="IOBox (Value Advanced)">
@@ -112,8 +96,6 @@
    </NODE>
    <LINK srcnodeid="18" srcpinname="World" dstnodeid="9" dstpinname="World">
    </LINK>
-   <LINK srcnodeid="9" srcpinname="Success" dstnodeid="17" dstpinname="Y Input Value">
-   </LINK>
    <LINK srcnodeid="16" srcpinname="Y Output Value" dstnodeid="9" dstpinname="Add">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="8" systemname="IOBox (Value Advanced)">
@@ -156,7 +138,7 @@
    <PIN pinname="Y Output Value" visible="1">
    </PIN>
    </NODE>
-   <PACK Name="addonpack" Version="38.1.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE systemname="SetTransform (MultiTouchStack)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="SetTransform (MultiTouchStack)" componentmode="Hidden" id="7">
    <BOUNDS type="Node" left="4428" top="9276" width="3804" height="276">

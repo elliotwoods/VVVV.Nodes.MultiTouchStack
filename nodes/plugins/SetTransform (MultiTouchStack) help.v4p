@@ -42,22 +42,6 @@
    <PIN pinname="Reset" visible="1">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="17">
-   <BOUNDS type="Box" left="888" top="4920" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="888" top="4920" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Bang">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Success">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16">
    <BOUNDS type="Box" left="7188" top="3216" width="480" height="480">
    </BOUNDS>
@@ -195,8 +179,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="18" srcpinname="World" dstnodeid="9" dstpinname="World">
-   </LINK>
-   <LINK srcnodeid="9" srcpinname="Success" dstnodeid="17" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="16" srcpinname="Y Output Value" dstnodeid="9" dstpinname="Add">
    </LINK>

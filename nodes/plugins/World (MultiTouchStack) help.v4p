@@ -25,9 +25,9 @@
    </PIN>
    </NODE>
    <NODE nodename="World (MultiTouchStack)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="960" top="3168" width="3720" height="276">
+   <BOUNDS type="Node" left="960" top="2808" width="3720" height="276">
    </BOUNDS>
-   <BOUNDS type="Box" left="960" top="3168" width="0" height="0">
+   <BOUNDS type="Box" left="960" top="2808" width="0" height="0">
    </BOUNDS>
    <PIN pinname="World" visible="1">
    </PIN>
@@ -44,22 +44,6 @@
    </NODE>
    <PACK Name="addonpack" Version="35.0.0">
    </PACK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="7">
-   <BOUNDS type="Box" left="960" top="4980" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="960" top="4980" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Bang">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Success">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="8">
    <BOUNDS type="Box" left="7260" top="3276" width="480" height="480">
    </BOUNDS>
@@ -187,9 +171,9 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="0" srcpinname="World" dstnodeid="25" dstpinname="World" linkstyle="Bezier">
-   <LINKPOINT x="996" y="4194">
+   <LINKPOINT x="996" y="3954">
    </LINKPOINT>
-   <LINKPOINT x="1848" y="4194">
+   <LINKPOINT x="1848" y="4074">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="25" srcpinname="Slides" dstnodeid="10" dstpinname="Input Node">
@@ -221,9 +205,9 @@
    <LINK srcnodeid="0" srcpinname="World" dstnodeid="26" dstpinname="World" hiddenwhenlocked="1">
    </LINK>
    <LINK srcnodeid="23" srcpinname="Cursor ID" dstnodeid="0" dstpinname="Cursor ID" linkstyle="Bezier">
-   <LINKPOINT x="1448" y="2546">
+   <LINKPOINT x="1448" y="2426">
    </LINKPOINT>
-   <LINKPOINT x="892" y="2518">
+   <LINKPOINT x="892" y="2278">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="23" srcpinname="Cursor Position XY" dstnodeid="0" dstpinname="Cursor PositionXY">
@@ -249,9 +233,9 @@
    <LINK srcnodeid="31" srcpinname="Layer Out" dstnodeid="27" dstpinname="Layers">
    </LINK>
    <LINK srcnodeid="23" srcpinname="Cursor ID" dstnodeid="0" dstpinname="Cursor Index" linkstyle="Bezier">
-   <LINKPOINT x="1380" y="2574">
+   <LINKPOINT x="1380" y="2454">
    </LINKPOINT>
-   <LINKPOINT x="984" y="2574">
+   <LINKPOINT x="984" y="2334">
    </LINKPOINT>
    </LINK>
    <NODE systemname="Slide (MultiTouchStack Split)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="Slide (MultiTouchStack Split)" componentmode="Hidden" id="34">
@@ -324,8 +308,6 @@
    </NODE>
    <LINK srcnodeid="0" srcpinname="World" dstnodeid="37" dstpinname="World">
    </LINK>
-   <LINK srcnodeid="37" srcpinname="Success" dstnodeid="7" dstpinname="Y Input Value">
-   </LINK>
    <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="37" dstpinname="Add">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="39">
@@ -342,6 +324,8 @@
    <PIN pinname="Vector Size" slicecount="1" values="2">
    </PIN>
    <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="ScaleXY">
    </PIN>
    </NODE>
    <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="37" dstpinname="ScaleXY">

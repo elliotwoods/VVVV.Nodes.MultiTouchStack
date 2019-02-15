@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\HitTest (MultiTouchStack Constraints DX9) help.v4p" scrollx="0" scrolly="0" systemname="HitTest (MultiTouchStack Constraints DX9) help" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\HitTest (MultiTouchStack Constraints DX9) help.v4p">
-   <BOUNDS type="Window" left="13845" top="1665" width="13020" height="11280">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\HitTest (MultiTouchStack Constraints DX9) help.v4p" scrollx="0" scrolly="0" systemname="HitTest (MultiTouchStack Constraints DX9) help" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\HitTest (MultiTouchStack Constraints DX9) help.v4p">
+   <BOUNDS type="Window" left="13836" top="1656" width="13020" height="12648">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3" systemname="IOBox (String)">
    <BOUNDS type="Node" left="230" top="230" width="5100" height="450">
@@ -32,26 +32,10 @@
    <PIN pinname="Reset" visible="1">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="19" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="2442" top="5036" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="2442" top="5036" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Bang">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Success">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="18" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="8742" top="3332" width="480" height="480">
+   <BOUNDS type="Box" left="8742" top="4652" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="8742" top="3332" width="0" height="0">
+   <BOUNDS type="Node" left="8742" top="4652" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -69,9 +53,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="17" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="4210" top="5550" width="792" height="240">
+   <BOUNDS type="Box" left="4210" top="7950" width="792" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4210" top="5550" width="0" height="0">
+   <BOUNDS type="Node" left="4210" top="7950" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Output Node" visible="1">
    </PIN>
@@ -79,19 +63,19 @@
    </PIN>
    </NODE>
    <NODE systemname="GetSlides (MultiTouchStack)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="GetSlides (MultiTouchStack)" componentmode="Hidden" id="11">
-   <BOUNDS type="Node" left="4210" top="5010" width="100" height="100">
+   <BOUNDS type="Node" left="4210" top="7410" width="100" height="100">
    </BOUNDS>
    <PIN pinname="World" visible="1">
    </PIN>
    <PIN pinname="Slides" visible="1">
    </PIN>
-   <BOUNDS type="Box" left="4210" top="5010">
+   <BOUNDS type="Box" left="4210" top="7410">
    </BOUNDS>
    </NODE>
    <LINK srcnodeid="20" srcpinname="World" dstnodeid="11" dstpinname="World" linkstyle="Bezier">
-   <LINKPOINT x="2766" y="3982">
+   <LINKPOINT x="2766" y="4782">
    </LINKPOINT>
-   <LINKPOINT x="3912" y="4118">
+   <LINKPOINT x="3912" y="5718">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="11" srcpinname="Slides" dstnodeid="17" dstpinname="Input Node">
@@ -119,7 +103,7 @@
    <LINK srcnodeid="6" srcpinname="Y Output Value" dstnodeid="20" dstpinname="Reset">
    </LINK>
    <NODE systemname="AddSlide (MultiTouchStack Transform)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="AddSlide (MultiTouchStack Transform)" componentmode="Hidden" id="5">
-   <BOUNDS type="Node" left="2442" top="4424" width="6348" height="276">
+   <BOUNDS type="Node" left="2442" top="6824" width="6348" height="276">
    </BOUNDS>
    <PIN pinname="ScaleXY" visible="1">
    </PIN>
@@ -127,17 +111,17 @@
    </PIN>
    <PIN pinname="Drag Hit Test" visible="1">
    </PIN>
+   <PIN pinname="Behavior" visible="1" slicecount="1" values="||">
+   </PIN>
    </NODE>
    <LINK srcnodeid="20" srcpinname="World" dstnodeid="5" dstpinname="World">
-   </LINK>
-   <LINK srcnodeid="5" srcpinname="Success" dstnodeid="19" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="18" srcpinname="Y Output Value" dstnodeid="5" dstpinname="Add">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="4" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="4030" top="3628" width="792" height="480">
+   <BOUNDS type="Box" left="4150" top="6196" width="792" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="4030" top="3628" width="0" height="0">
+   <BOUNDS type="Node" left="4150" top="6196" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0.1,0.1">
    </PIN>
@@ -153,9 +137,9 @@
    <LINK srcnodeid="4" srcpinname="Y Output Value" dstnodeid="5" dstpinname="ScaleXY">
    </LINK>
    <NODE systemname="HitTest (MultiTouchStack ImageFile)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="HitTest (MultiTouchStack ImageFile)" componentmode="Hidden" id="26">
-   <BOUNDS type="Node" left="6100" top="3380" width="100" height="100">
+   <BOUNDS type="Node" left="6736" top="2396" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="6100" top="3380" width="2000" height="2000">
+   <BOUNDS type="Box" left="6736" top="2396" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -165,9 +149,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="27" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="6520" top="2160" width="2700" height="240">
+   <BOUNDS type="Box" left="6736" top="1224" width="2700" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="6520" top="2160" width="0" height="0">
+   <BOUNDS type="Node" left="6736" top="1224" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input String" slicecount="1" visible="1" values="|help assets\maze.png|">
    </PIN>
@@ -186,12 +170,12 @@
    </NODE>
    <LINK srcnodeid="27" srcpinname="Output String" dstnodeid="26" dstpinname="Filename">
    </LINK>
-   <PACK Name="addonpack" Version="38.1.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE systemname="Slide (MultiTouchStack Split)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="Slide (MultiTouchStack Split)" componentmode="Hidden" id="31">
-   <BOUNDS type="Node" left="4210" top="6280" width="100" height="100">
+   <BOUNDS type="Node" left="4210" top="8680" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4210" top="6280" width="2000" height="2000">
+   <BOUNDS type="Box" left="4210" top="8680" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Transform" visible="1">
    </PIN>
@@ -201,9 +185,9 @@
    <LINK srcnodeid="17" srcpinname="Output Node" dstnodeid="31" dstpinname="Input">
    </LINK>
    <NODE systemname="HitTest (MultiTouchStack Transform)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="HitTest (MultiTouchStack Transform)" componentmode="Hidden" id="32">
-   <BOUNDS type="Node" left="7150" top="3470" width="100" height="100">
+   <BOUNDS type="Node" left="8326" top="3902" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="7150" top="3470" width="2000" height="2000">
+   <BOUNDS type="Box" left="8326" top="3902" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -213,9 +197,9 @@
    <LINK srcnodeid="32" srcpinname="Output" dstnodeid="5" dstpinname="Drag Hit Test">
    </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="33" systemname="IOBox (Enumerations)">
-   <BOUNDS type="Box" left="7720" top="2970" width="830" height="240">
+   <BOUNDS type="Box" left="8908" top="3414" width="830" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="7720" top="2970" width="0" height="0">
+   <BOUNDS type="Node" left="8908" top="3414" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="1" visible="1" values="Circle">
    </PIN>
@@ -231,9 +215,9 @@
    <LINK srcnodeid="33" srcpinname="Output Enum" dstnodeid="32" dstpinname="Shape">
    </LINK>
    <NODE systemname="HitTest (MultiTouchStack Constraints)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="HitTest (MultiTouchStack Constraints)" componentmode="Hidden" id="25">
-   <BOUNDS type="Node" left="6110" top="3920" width="100" height="100">
+   <BOUNDS type="Node" left="6446" top="5204" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="6110" top="3920" width="2000" height="2000">
+   <BOUNDS type="Box" left="6446" top="5204" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Hit Test Function" visible="1">
    </PIN>
@@ -249,9 +233,9 @@
    <PACK Name="dx11" Version="1.3.1">
    </PACK>
    <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InAWindow" id="34">
-   <BOUNDS type="Node" left="1575" top="9180" width="100" height="100">
+   <BOUNDS type="Node" left="1575" top="11580" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="1575" top="9180" width="2400" height="1800">
+   <BOUNDS type="Box" left="1575" top="11580" width="2400" height="1800">
    </BOUNDS>
    <BOUNDS type="Window" left="3690" top="1815" width="10275" height="10305">
    </BOUNDS>
@@ -259,7 +243,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Group (EX9)" nodename="Group (EX9)" componentmode="Hidden" id="35">
-   <BOUNDS type="Node" left="1575" top="8685" width="3780" height="270">
+   <BOUNDS type="Node" left="1575" top="11085" width="3780" height="270">
    </BOUNDS>
    <PIN pinname="Layer Template Count" slicecount="1" values="4">
    </PIN>
@@ -277,9 +261,9 @@
    <LINK srcnodeid="35" srcpinname="Layer" dstnodeid="34" dstpinname="Layers">
    </LINK>
    <NODE systemname="FileTexture (EX9.Texture)" filename="" nodename="FileTexture (EX9.Texture)" componentmode="Hidden" id="36">
-   <BOUNDS type="Node" left="1575" top="6855" width="100" height="100">
+   <BOUNDS type="Node" left="1575" top="9255" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="2140" top="6850" width="2000" height="2000">
+   <BOUNDS type="Box" left="2140" top="9250" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Texture Out" visible="1">
    </PIN>
@@ -287,13 +271,13 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="27" srcpinname="Output String" dstnodeid="36" dstpinname="Filename" linkstyle="Bezier" hiddenwhenlocked="1">
-   <LINKPOINT x="6943" y="4488">
+   <LINKPOINT x="7087" y="4664">
    </LINKPOINT>
-   <LINKPOINT x="1777" y="4752">
+   <LINKPOINT x="1849" y="6040">
    </LINKPOINT>
    </LINK>
    <NODE systemname="Invert (EX9.Texture Filter)" filename="%VVVV%\addonpack\lib\nodes\modules\TextureFX\Filter\Invert\Invert (EX9.Texture Filter).v4p" nodename="Invert (EX9.Texture Filter)" componentmode="Hidden" id="37">
-   <BOUNDS type="Node" left="1575" top="7305" width="100" height="100">
+   <BOUNDS type="Node" left="1575" top="9705" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Texture Out" visible="1">
    </PIN>
@@ -303,7 +287,7 @@
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <BOUNDS type="Box" left="1575" top="7305">
+   <BOUNDS type="Box" left="1575" top="9705">
    </BOUNDS>
    </NODE>
    <LINK srcnodeid="36" srcpinname="Texture Out" dstnodeid="37" dstpinname="Texture In">
@@ -311,13 +295,13 @@
    <LINK srcnodeid="36" srcpinname="Texture Out" dstnodeid="37" dstpinname="Input">
    </LINK>
    <NODE systemname="FullscreenQuad (DX9)" filename="%VVVV%\addonpack\lib\nodes\modules\TextureFX\misc\FullscreenQuad (DX9).v4p" nodename="FullscreenQuad (DX9)" componentmode="Hidden" id="38">
-   <BOUNDS type="Node" left="1575" top="7755" width="100" height="100">
+   <BOUNDS type="Node" left="1575" top="10155" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer" visible="1">
    </PIN>
    <PIN pinname="Texture" visible="1" slicecount="1" values="||">
    </PIN>
-   <BOUNDS type="Box" left="1575" top="7755">
+   <BOUNDS type="Box" left="1575" top="10155">
    </BOUNDS>
    </NODE>
    <LINK srcnodeid="37" srcpinname="Output" dstnodeid="38" dstpinname="Texture">
@@ -325,7 +309,7 @@
    <LINK srcnodeid="38" srcpinname="Layer" dstnodeid="35" dstpinname="Layer 1">
    </LINK>
    <NODE systemname="Preview (MultiTouchStack Debug DX9)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\modules\Preview (MultiTouchStack Debug DX9).v4p" nodename="Preview (MultiTouchStack Debug DX9)" componentmode="Hidden" id="10">
-   <BOUNDS type="Node" left="2505" top="8265" width="100" height="100">
+   <BOUNDS type="Node" left="2505" top="10665" width="100" height="100">
    </BOUNDS>
    <PIN pinname="World" visible="1">
    </PIN>
@@ -337,7 +321,7 @@
    <LINK srcnodeid="10" srcpinname="Layer Out" dstnodeid="35" dstpinname="Layer 2">
    </LINK>
    <NODE systemname="HSL (Color Join)" nodename="HSL (Color Join)" componentmode="Hidden" id="39">
-   <BOUNDS type="Node" left="4360" top="7265" width="100" height="100">
+   <BOUNDS type="Node" left="4360" top="9665" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -345,7 +329,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Constant (EX9.Effect)" filename="%VVVV%\lib\nodes\effects\Constant.fx" nodename="Constant (EX9.Effect)" componentmode="Hidden" id="40">
-   <BOUNDS type="Node" left="3885" top="7755" width="100" height="100">
+   <BOUNDS type="Node" left="3885" top="10155" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Geometry" visible="1">
    </PIN>
@@ -369,9 +353,9 @@
    <LINK srcnodeid="31" srcpinname="Transform" dstnodeid="40" dstpinname="Transform">
    </LINK>
    <NODE systemname="Segment (EX9.Geometry 2d)" filename="%VVVV%\addonpack\lib\nodes\plugins\2dMeshNodes.dll" nodename="Segment (EX9.Geometry 2d)" componentmode="Hidden" id="41">
-   <BOUNDS type="Node" left="4050" top="6805" width="100" height="100">
+   <BOUNDS type="Node" left="4050" top="9205" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4050" top="6805" width="2000" height="2000">
+   <BOUNDS type="Box" left="4050" top="9205" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
@@ -383,9 +367,9 @@
    <LINK srcnodeid="41" srcpinname="Output" dstnodeid="40" dstpinname="Mesh">
    </LINK>
    <LINK srcnodeid="40" srcpinname="Layer" dstnodeid="35" dstpinname="Layer 3" linkstyle="VHV">
-   <LINKPOINT x="3635" y="8300">
+   <LINKPOINT x="3635" y="10700">
    </LINKPOINT>
-   <LINKPOINT x="2230" y="8350">
+   <LINKPOINT x="2230" y="10750">
    </LINKPOINT>
    </LINK>
    <NODE systemname="TouchSimulator (MultiTouchStack Debug DX9)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\modules\TouchSimulator (MultiTouchStack Debug DX9).v4p" nodename="TouchSimulator (MultiTouchStack Debug DX9)" componentmode="Hidden" id="12">
@@ -422,4 +406,104 @@
    </LINK>
    <LINK srcnodeid="12" srcpinname="Mouse Preview Layer DX9" dstnodeid="35" dstpinname="Layer 4" hiddenwhenlocked="1">
    </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="42">
+   <BOUNDS type="Node" left="7128" top="5232" width="3324" height="240">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7128" top="5232" width="3324" height="240">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|constrain the slide to be within a HitTest region|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="String">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="43">
+   <BOUNDS type="Node" left="9000" top="3924" width="3012" height="240">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9000" top="3924" width="3012" height="240">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|the touch-active shape of the slide is a circle|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="44">
+   <BOUNDS type="Node" left="7464" top="2400" width="4128" height="240">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7464" top="2400" width="4128" height="240">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|the region which the slide can exist within is set by this region|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="TranslateX (MultiTouchStack Behaviors)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="TranslateX (MultiTouchStack Behaviors)" componentmode="Hidden" id="45">
+   <BOUNDS type="Node" left="3912" top="4056" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3912" top="4056" width="2400" height="2400">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Fall Back" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="TranslateY (MultiTouchStack Behaviors)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="TranslateY (MultiTouchStack Behaviors)" componentmode="Hidden" id="46">
+   <BOUNDS type="Node" left="3900" top="3588" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3900" top="3588" width="2400" height="2400">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="46" srcpinname="Output" dstnodeid="45" dstpinname="Fall Back">
+   </LINK>
+   <NODE systemname="Translate (MultiTouchStack Behaviors)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="Translate (MultiTouchStack Behaviors)" componentmode="Hidden" id="47">
+   <BOUNDS type="Node" left="3912" top="4524" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3912" top="4524" width="2400" height="2400">
+   </BOUNDS>
+   <PIN pinname="Fall Back" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="45" srcpinname="Output" dstnodeid="47" dstpinname="Fall Back">
+   </LINK>
+   <LINK srcnodeid="47" srcpinname="Output" dstnodeid="5" dstpinname="Behavior">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="48">
+   <BOUNDS type="Node" left="4836" top="3528" width="7056" height="240">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4836" top="3528" width="1788" height="1284">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|a stack of possible behaviours for the slide.&cr;&lf;&cr;&lf;MultiTouchStack attempts them one by one from bottom to top|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="49">
+   <BOUNDS type="Node" left="264" top="672" width="5100" height="600">
+   </BOUNDS>
+   <BOUNDS type="Box" left="264" top="672" width="5460" height="624">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|A hit test constraint. A constraint limits the transform properties of a slide. By using a HitTest here, we can constrain the slide to exist within a custom shape defined by a HitTest function (e.g. in this case, an image)|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   </NODE>
    </PATCH>

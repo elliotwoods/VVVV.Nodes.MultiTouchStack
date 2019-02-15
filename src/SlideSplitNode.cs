@@ -72,7 +72,7 @@ namespace VVVV.Nodes.MultiTouchStack
 
 				FOutIndex[i] = slide.Index;
 				FOutTransform[i] = transform;
-				FOutBehavior[i] = slide.Behaviour;
+				FOutBehavior[i] = slide.Behavior;
 				FOutConstraint[i] = slide.Constraint;
 				FOutTags[i].AssignFrom(slide.Tags);
 				FOutCursorsAttached[i].AssignFrom(slide.AttachedCursors);

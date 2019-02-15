@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\Filter (MultiTouchStack Tag) help.v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\Filter (MultiTouchStack Tag) help.v4p">
    <BOUNDS type="Window" left="20196" top="6156" width="13200" height="16176">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">

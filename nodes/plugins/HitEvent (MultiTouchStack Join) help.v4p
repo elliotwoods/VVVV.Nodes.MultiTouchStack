@@ -42,22 +42,6 @@
    <PIN pinname="Reset" visible="1">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="20">
-   <BOUNDS type="Box" left="624" top="5880" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="624" top="5880" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Bang">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Success">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="19">
    <BOUNDS type="Box" left="6924" top="4536" width="480" height="480">
    </BOUNDS>
@@ -333,8 +317,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="21" srcpinname="World" dstnodeid="6" dstpinname="World">
-   </LINK>
-   <LINK srcnodeid="6" srcpinname="Success" dstnodeid="20" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="19" srcpinname="Y Output Value" dstnodeid="6" dstpinname="Add">
    </LINK>
@@ -856,18 +838,4 @@
    </LINK>
    <LINK srcnodeid="63" srcpinname="Output" dstnodeid="61" dstpinname="Delete">
    </LINK>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="64">
-   <BOUNDS type="Node" left="4090" top="13710" width="1370" height="230">
-   </BOUNDS>
-   <BOUNDS type="Box" left="4090" top="13710" width="1370" height="230">
-   </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="|multitouch debug|">
-   </PIN>
-   <PIN pinname="Output String" visible="0">
-   </PIN>
-   <PIN pinname="Show Grid" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="String Type" slicecount="1" values="MultiLine">
-   </PIN>
-   </NODE>
    </PATCH>

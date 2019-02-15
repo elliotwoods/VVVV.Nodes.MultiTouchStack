@@ -7,14 +7,11 @@ using VVVV.PluginInterfaces.V2;
 
 namespace VVVV.Nodes.MultiTouchStack.Behaviors
 {
-	public class BehaviorNode<BehaviourType> : IPluginEvaluate where BehaviourType : IBehavior, new()
+	public class BehaviorNode<BehaviorType> : IPluginEvaluate where BehaviorType : IBehavior, new()
 	{
-		public static BehaviourType PrincipalBehavior = new BehaviourType();
+		public static BehaviorType PrincipalBehavior = new BehaviorType();
 
 		#region fields & pins
-		[Input("Also Try", IsSingle = true)]
-		public ISpread<IBehavior> FInAlsoTry;
-
 		[Input("Fall Back", IsSingle = true)]
 		public ISpread<IBehavior> FInFallBack;
 
@@ -26,18 +23,17 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 
 		public void Evaluate(int SpreadMax)
 		{
-			if(FInAlsoTry[0] != null || FInFallBack[0] != null)
+			if(FInFallBack[0] != null)
 			{
 				FOutput[0] = new Combined
 				{
-					Principal = BehaviorNode<BehaviourType>.PrincipalBehavior,
-					AlsoTry = FInAlsoTry[0],
+					Principal = BehaviorNode<BehaviorType>.PrincipalBehavior,
 					Fallback = FInFallBack[0]
 				};
 			}
 			else
 			{
-				FOutput[0] = BehaviorNode<BehaviourType>.PrincipalBehavior;
+				FOutput[0] = BehaviorNode<BehaviorType>.PrincipalBehavior;
 			}
 		}
 	}

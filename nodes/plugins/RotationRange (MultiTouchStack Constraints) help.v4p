@@ -42,22 +42,6 @@
    <PIN pinname="Reset" visible="1">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="25">
-   <BOUNDS type="Box" left="516" top="5160" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="516" top="5160" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Bang">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Success">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="24">
    <BOUNDS type="Box" left="6796" top="3286" width="480" height="480">
    </BOUNDS>
@@ -190,8 +174,6 @@
    </NODE>
    <LINK srcnodeid="26" srcpinname="World" dstnodeid="11" dstpinname="World">
    </LINK>
-   <LINK srcnodeid="11" srcpinname="Success" dstnodeid="25" dstpinname="Y Input Value">
-   </LINK>
    <LINK srcnodeid="24" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Add">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="10">
@@ -269,9 +251,9 @@
    <LINK srcnodeid="6" srcpinname="Output" dstnodeid="11" dstpinname="Behavior">
    </LINK>
    <NODE systemname="Translate (MultiTouchStack Behaviors)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\VVVV.Nodes.MultiTouchStack.dll" nodename="Translate (MultiTouchStack Behaviors)" componentmode="Hidden" id="5">
-   <BOUNDS type="Node" left="4964" top="3426" width="100" height="100">
+   <BOUNDS type="Node" left="3944" top="3450" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4964" top="3426" width="2000" height="2000">
+   <BOUNDS type="Box" left="3944" top="3450" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -407,7 +389,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="9540" top="264" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="-0.25">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="-0.15">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -419,11 +401,11 @@
    <LINK srcnodeid="35" srcpinname="Y Output Value" dstnodeid="7" dstpinname="Minimum">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="36">
-   <BOUNDS type="Box" left="10080" top="792" width="792" height="240">
+   <BOUNDS type="Box" left="10572" top="240" width="792" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="10080" top="792" width="0" height="0">
+   <BOUNDS type="Node" left="10572" top="240" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.25">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.15">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>

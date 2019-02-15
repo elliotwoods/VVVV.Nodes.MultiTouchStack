@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\RotationRange (MultiTouchStack Constraints DX9) help.v4p" systemname="RotationRange (MultiTouchStack Constraints DX9) help" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\RotationRange (MultiTouchStack Constraints DX9) help.v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\RotationRange (MultiTouchStack Constraints DX9) help.v4p" systemname="RotationRange (MultiTouchStack Constraints DX9) help" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\RotationRange (MultiTouchStack Constraints DX9) help.v4p">
    <BOUNDS type="Window" left="14010" top="1725" width="13995" height="11850">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3" systemname="IOBox (String)">
@@ -30,22 +30,6 @@
    <PIN pinname="Cursor Index" visible="1">
    </PIN>
    <PIN pinname="Reset" visible="1">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="25" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="516" top="5160" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="516" top="5160" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Bang">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Success">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="24" systemname="IOBox (Value Advanced)">
@@ -101,8 +85,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="26" srcpinname="World" dstnodeid="11" dstpinname="World">
-   </LINK>
-   <LINK srcnodeid="11" srcpinname="Success" dstnodeid="25" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="24" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Add">
    </LINK>
@@ -161,17 +143,17 @@
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <PIN pinname="Minimum" slicecount="1" values="-0.25">
+   <PIN pinname="Minimum" slicecount="1" values="-0.25" visible="1">
    </PIN>
-   <PIN pinname="Maximum" slicecount="1" values="0.25">
+   <PIN pinname="Maximum" slicecount="1" values="0.25" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="7" srcpinname="Output" dstnodeid="9" dstpinname="Constraint">
    </LINK>
    <NODE systemname="FullMultitouch (MultiTouchStack Behaviors)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="FullMultitouch (MultiTouchStack Behaviors)" componentmode="Hidden" id="6">
-   <BOUNDS type="Node" left="3666" top="3940" width="100" height="100">
+   <BOUNDS type="Node" left="3942" top="3952" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="3666" top="3940" width="2000" height="2000">
+   <BOUNDS type="Box" left="3942" top="3952" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -181,9 +163,9 @@
    <LINK srcnodeid="6" srcpinname="Output" dstnodeid="11" dstpinname="Behavior">
    </LINK>
    <NODE systemname="Translate (MultiTouchStack Behaviors)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="Translate (MultiTouchStack Behaviors)" componentmode="Hidden" id="5">
-   <BOUNDS type="Node" left="4736" top="3390" width="100" height="100">
+   <BOUNDS type="Node" left="3944" top="3342" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4736" top="3390" width="2000" height="2000">
+   <BOUNDS type="Box" left="3944" top="3342" width="2000" height="2000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -228,7 +210,7 @@
    </NODE>
    <LINK srcnodeid="31" srcpinname="Y Output Value" dstnodeid="4" dstpinname="TranslateXY">
    </LINK>
-   <PACK Name="addonpack" Version="38.1.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="33" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="10950" top="1770" width="850" height="540">
@@ -376,4 +358,46 @@
    </LINK>
    <LINK srcnodeid="39" srcpinname="Layer" dstnodeid="36" dstpinname="Layer 3">
    </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="41">
+   <BOUNDS type="Box" left="9312" top="744" width="792" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9312" top="744" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="-0.15">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="41" srcpinname="Y Output Value" dstnodeid="7" dstpinname="Minimum">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="42">
+   <BOUNDS type="Box" left="10212" top="732" width="792" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10212" top="732" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.15">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="42" srcpinname="Y Output Value" dstnodeid="7" dstpinname="Maximum">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="43">
+   <BOUNDS type="Node" left="4824" top="3216" width="3744" height="240">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4824" top="3216" width="1836" height="600">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|When the constraint is hit, Fall Back behaviours are used|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
    </PATCH>

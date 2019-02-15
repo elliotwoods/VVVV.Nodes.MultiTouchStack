@@ -7,16 +7,16 @@ using VVVV.Utils.VMath;
 
 namespace VVVV.Nodes.MultiTouchStack.Behaviors
 {
-	public class Scale : IBehavior
+	public class Scale : Behavior
 	{
-		public override Matrix4x4 Perform(Matrix4x4 transform, PerformArguments performArguments)
+		public override bool Perform(PerformArguments performArguments, Matrix4x4 oldTransform, ref Matrix4x4 newTransform)
 		{
 			var cursorCount = performArguments.Cursors.Count();
 
 			if (cursorCount < 2)
 			{
-				// Perform no action
-				throw new Exception();
+				// Cannot perform Behaviour
+				return false;
 			}
 
 			performArguments.ActionsApplied.Add(ActionsApplied.Translate);
@@ -43,10 +43,12 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 
 			var averageScale = Math.Pow(totalScale, 1 / cursorsForAction.Count());
 
-			return transform
+			newTransform = oldTransform
 				* VMath.Translate(-pivot.x, -pivot.y, 0.0)
 				* VMath.Scale(totalScale, totalScale, 1.0)
 				* VMath.Translate(pivot.x, pivot.y, 0.0);
+
+			return true;
 		}
 	}
 }

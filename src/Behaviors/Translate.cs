@@ -7,14 +7,14 @@ using VVVV.Utils.VMath;
 
 namespace VVVV.Nodes.MultiTouchStack.Behaviors
 {
-	public class Translate : IBehavior
+	public class Translate : Behavior
 	{
-		public override Matrix4x4 Perform(Matrix4x4 transform, PerformArguments performArguments)
+		public override bool Perform(PerformArguments performArguments, Matrix4x4 oldTransform, ref Matrix4x4 newTransform)
 		{
 			if (performArguments.Cursors.Count() < 1)
 			{
-				// Perform no action
-				throw new Exception();
+				// Cannot perform Behaviour
+				return false;
 			}
 
 			performArguments.ActionsApplied.Add(ActionsApplied.Translate);
@@ -26,7 +26,9 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 			}
 			var averageTranslation = totalTranslation / performArguments.Cursors.Count();
 
-			return transform * VMath.Translate(new Vector3D(averageTranslation));
+			newTransform = oldTransform * VMath.Translate(new Vector3D(averageTranslation));
+
+			return true;
 		}
 	}
 }

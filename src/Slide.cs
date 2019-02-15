@@ -10,7 +10,7 @@ namespace VVVV.Nodes.MultiTouchStack {
 		public int Index;
 		public Matrix4x4 Transform;
 		public List<String> Tags;
-		public Behaviors.IBehavior Behaviour;
+		public Behaviors.IBehavior Behavior;
 		public Constraints.IConstraint Constraint;
 		public IHitTestFunction DragHitTestFunction;
 		public List<HitEvent> HitEvents;
@@ -66,15 +66,15 @@ namespace VVVV.Nodes.MultiTouchStack {
 		{
 			if (this.AttachedCursors.Count > 0)
 			{
-				// Find the behavior for the multitouch action
-				var behaviorChain = this.Behaviour;
+				// Find the Behavior for the multitouch action
+				var behaviorChain = this.Behavior;
 				if (behaviorChain == null)
 				{
 					//default to full multitouch
 					behaviorChain = Behaviors.FullMultitouchNode.PrincipalBehavior;
 				}
 
-				// Setup the arguments to perform the action
+				// Setup the arguments to perform the Behavior 
 				var performArguments = new Behaviors.PerformArguments
 				{
 					Cursors = this.AttachedCursors
@@ -94,12 +94,17 @@ namespace VVVV.Nodes.MultiTouchStack {
 					};
 				}
 
-				// Perform the behavior chain (inside the chain it checks constraints if any)
+				// Perform the behavior chain (inside the chain it checks relevant Constraints and at 
+				// each point in the tree uses fallback behavior if Constraints are not met if any)
 				{
-					Matrix4x4 newTransform;
-					if (behaviorChain.PerformAndValidate(performArguments, this.Transform, out newTransform))
+					Matrix4x4 newTransform = this.Transform; // this will always be overwritten - it's just the cheapest thing here to use as a dummy
+					if (behaviorChain.PerformAndValidate(performArguments, this.Transform, ref newTransform))
 					{
 						this.Transform = newTransform;
+					}
+					else
+					{
+						// No matching of behaviors and constraints could be met
 					}
 				}
 			}

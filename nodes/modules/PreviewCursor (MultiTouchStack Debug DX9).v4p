@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\modules\PreviewCursor (MultiTouchStack Debug DX9).v4p" systemname="PreviewCursor (MultiTouchStack Debug DX9)" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\modules\PreviewCursor (MultiTouchStack Debug DX9).v4p" scrollx="0" scrolly="-360">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewCursor (MultiTouchStack Debug DX9).v4p" systemname="PreviewCursor (MultiTouchStack Debug DX9)" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\modules\PreviewCursor (MultiTouchStack Debug DX9).v4p" scrollx="0" scrolly="-360">
    <NODE systemname="Translate (Transform Vector)" nodename="Translate (Transform Vector)" componentmode="Hidden" id="2">
    <BOUNDS type="Node" left="1920" top="3525" width="100" height="100">
    </BOUNDS>
@@ -12,7 +12,7 @@
    </NODE>
    <BOUNDS type="Window" left="4965" top="1665" width="10680" height="9855">
    </BOUNDS>
-   <PACK Name="addonpack" Version="38.1.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="4" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="1080" top="1020" width="792" height="240">
@@ -405,7 +405,7 @@
    </PIN>
    <PIN pinname="Text" visible="1">
    </PIN>
-   <PIN pinname="Font" slicecount="1" values="|Acumin Pro|">
+   <PIN pinname="Font" slicecount="1" values="Arial">
    </PIN>
    <PIN pinname="Size" slicecount="1" values="22">
    </PIN>
@@ -428,6 +428,8 @@
    <PIN pinname="VerticesXYZ" visible="1">
    </PIN>
    <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="BinSize" slicecount="1" values="2">
    </PIN>
    </NODE>
    <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="64">

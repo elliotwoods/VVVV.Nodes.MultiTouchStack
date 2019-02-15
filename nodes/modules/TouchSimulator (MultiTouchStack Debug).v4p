@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.1.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_50beta35.1_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\TouchSimulator (MultiTouchStack Debug).v4p" systemname="TouchSim" filename="E:\Projects\multiTouchStack2015\MultitouchStack\subpatches\TouchSim.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="16884" top="6144" width="13332" height="10824">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
+   <PATCH nodename="C:\Users\User\Desktop\multitouch stack test\vvvv_45beta34.2_x64\packs\VVVV.Nodes.MultiTouchStack 20190214\nodes\modules\TouchSimulator (MultiTouchStack Debug).v4p" systemname="TouchSim" filename="E:\Projects\multiTouchStack2015\MultitouchStack\subpatches\TouchSim.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="16665" top="4230" width="16260" height="13155">
    </BOUNDS>
-   <PACK Name="addonpack" Version="35.0.0">
+   <PACK Name="addonpack" Version="34.1.0">
    </PACK>
    <NODE id="1" systemname="Mouse (Devices Window)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Mouse (Devices Window)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
    <BOUNDS type="Node" left="3810" top="1275" width="100" height="100">
@@ -205,13 +205,19 @@
    <LINK srcnodeid="8" srcpinname="Output" dstnodeid="14" dstpinname="Y Input Value">
    </LINK>
    <NODE systemname="Cons (Spreads)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Cons (Spreads)" componentmode="Hidden" id="15">
-   <BOUNDS type="Node" left="4680" top="5505" width="100" height="100">
+   <BOUNDS type="Node" left="4905" top="7590" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
    <PIN pinname="Input 2" visible="1">
    </PIN>
    <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input Count" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Input 3" visible="1">
+   </PIN>
+   <PIN pinname="Input 4" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="14" srcpinname="Y Output Value" dstnodeid="15" dstpinname="Input 1">
@@ -219,9 +225,9 @@
    <LINK srcnodeid="13" srcpinname="Y Output Value" dstnodeid="15" dstpinname="Input 2">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="4710" top="6690" width="795" height="240">
+   <BOUNDS type="Box" left="4920" top="8430" width="885" height="2250">
    </BOUNDS>
-   <BOUNDS type="Node" left="4710" top="6690" width="0" height="0">
+   <BOUNDS type="Node" left="4920" top="8430" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -229,27 +235,37 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Cursor Position XY|">
    </PIN>
+   <PIN pinname="Rows" slicecount="1" values="10">
+   </PIN>
    </NODE>
    <LINK srcnodeid="15" srcpinname="Output" dstnodeid="16" dstpinname="Y Input Value">
    </LINK>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="17">
-   <BOUNDS type="Node" left="570" top="6744" width="100" height="100">
+   <BOUNDS type="Node" left="795" top="8829" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="570" top="6744" width="795" height="240">
+   <BOUNDS type="Box" left="795" top="8829" width="795" height="1530">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Cursor ID|">
    </PIN>
    <PIN pinname="Y Input Value" visible="1">
    </PIN>
+   <PIN pinname="Rows" slicecount="1" values="5">
+   </PIN>
    </NODE>
    <NODE systemname="Cons (Spreads)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Cons (Spreads)" componentmode="Hidden" id="18">
-   <BOUNDS type="Node" left="675" top="5559" width="100" height="100">
+   <BOUNDS type="Node" left="810" top="7269" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
    <PIN pinname="Input 2" visible="1">
    </PIN>
    <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input Count" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Input 3" visible="1">
+   </PIN>
+   <PIN pinname="Input 4" visible="1">
    </PIN>
    </NODE>
    <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="19">
@@ -291,38 +307,6 @@
    <LINK srcnodeid="19" srcpinname="Output" dstnodeid="18" dstpinname="Input 1">
    </LINK>
    <LINK srcnodeid="21" srcpinname="Output" dstnodeid="18" dstpinname="Input 2">
-   </LINK>
-   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="22">
-   <BOUNDS type="Node" left="2040" top="6144" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="2040" top="6144" width="1260" height="1380">
-   </BOUNDS>
-   <PIN pinname="Rows" slicecount="1" values="2">
-   </PIN>
-   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0,0">
-   </PIN>
-   <PIN pinname="Vector Size" slicecount="1" values="2">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="|0, 0|">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="18" srcpinname="Output" dstnodeid="22" dstpinname="Y Input Value">
-   </LINK>
-   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="23">
-   <BOUNDS type="Node" left="3585" top="6180" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="3585" top="6180" width="795" height="960">
-   </BOUNDS>
-   <PIN pinname="Rows" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Y Input Value" slicecount="4" visible="1" values="0,0,0,1">
-   </PIN>
-   <PIN pinname="Vector Size" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="|0, 0, 0, 1|">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="15" srcpinname="Output" dstnodeid="23" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="18" srcpinname="Output" dstnodeid="17" dstpinname="Y Input Value">
    </LINK>
@@ -430,4 +414,200 @@
    </NODE>
    <LINK srcnodeid="32" srcpinname="Layer" dstnodeid="34" dstpinname="Input Node">
    </LINK>
+   <NODE systemname="Vector (2d Join)" nodename="Vector (2d Join)" componentmode="Hidden" id="41">
+   <BOUNDS type="Node" left="9075" top="3315" width="885" height="270">
+   </BOUNDS>
+   <PIN pinname="X" visible="1" slicecount="1" values="-0.520833333333333">
+   </PIN>
+   <PIN pinname="Y" visible="1" slicecount="1" values="-0.05">
+   </PIN>
+   <PIN pinname="XY" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="40" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="10575" top="1005" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10575" top="1005" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="8800">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|UDP Port|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="iPhoneFantastickInput2019" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack 20190214\nodes\modules\iPhoneFantastickInput2019.v4p" componentmode="Hidden" id="39" nodename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack 20190214\nodes\modules\iPhoneFantastickInput2019.v4p">
+   <BOUNDS type="Node" left="10815" top="2745" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10815" top="2745" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="7200" top="1170" width="28560" height="16590">
+   </BOUNDS>
+   <PIN pinname="Cursor ID" visible="1">
+   </PIN>
+   <PIN pinname="Cursor Position XY" visible="1">
+   </PIN>
+   <PIN pinname="Local Port" visible="1">
+   </PIN>
+   <PIN pinname="Enable" visible="1">
+   </PIN>
+   <PIN pinname="Flip portrait/landscape" visible="1">
+   </PIN>
+   <PIN pinname="Reset" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="40" srcpinname="Y Output Value" dstnodeid="39" dstpinname="Local Port">
+   </LINK>
+   <NODE id="38" nodename="IOBox (Value Advanced)" componentmode="InABox" systemname="IOBox (Value Advanced)" hiddenwhenlocked="0" managers="">
+   <PIN pinname="X Input Value" slicecount="1" pintype="Input" visible="-1" values="1">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" pintype="Input" values="1">
+   </PIN>
+   <BOUNDS type="Box" left="9405" top="630" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9405" top="630" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" pintype="Configuration" values="|Flip Portrait/Landscape|">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" pintype="Configuration" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" pintype="Configuration" values="Toggle">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" pintype="Configuration" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" pintype="Configuration" values="4">
+   </PIN>
+   <BOUNDS type="Window" left="0" top="0" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Tag" pintype="Configuration" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Pin Visibility" pintype="Configuration" slicecount="1" values="True">
+   </PIN>
+   <PIN pinname="SliceCount Mode" pintype="Configuration" slicecount="1" values="Input">
+   </PIN>
+   <PIN pinname="Columns" pintype="Configuration" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Rows" pintype="Configuration" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Pages" pintype="Configuration" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Show SliceIndex" pintype="Configuration" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Font" pintype="Configuration" slicecount="1" values="|Lucida Sans Unicode|">
+   </PIN>
+   <PIN pinname="Size" pintype="Configuration" slicecount="1" values="7">
+   </PIN>
+   <PIN pinname="Show Grid" pintype="Configuration" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Vector Size" pintype="Configuration" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Minimum" pintype="Configuration" slicecount="1" values="-99999999">
+   </PIN>
+   <PIN pinname="Maximum" pintype="Configuration" slicecount="1" values="99999999">
+   </PIN>
+   <PIN pinname="Default" pintype="Configuration" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Show Value" pintype="Configuration" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Show Slider" pintype="Configuration" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Slider Behavior" pintype="Configuration" slicecount="1" values="Endless">
+   </PIN>
+   <PIN pinname="Show Connections" pintype="Configuration" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Show Background" pintype="Configuration" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Sticky Slider" pintype="Configuration" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Allow MouseOffset" pintype="Configuration" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Slider Constraints" pintype="Configuration" slicecount="1" values="scX">
+   </PIN>
+   <PIN pinname="Slider Alignment" pintype="Configuration" slicecount="1" values="Grid">
+   </PIN>
+   <PIN pinname="SliceOffset" pintype="Input" visible="-1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="X Output Value" pintype="Output" visible="-1">
+   </PIN>
+   <PIN pinname="Y Output Value" pintype="Output" visible="1">
+   </PIN>
+   <PIN pinname="Changed" pintype="Output" visible="-1">
+   </PIN>
+   <PIN pinname="ID" pintype="Output" visible="-1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="37" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="9090" top="1950" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9090" top="1950" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="36" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="10830" top="1950" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10830" top="1950" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="36" srcpinname="Y Output Value" dstnodeid="39" dstpinname="Enable">
+   </LINK>
+   <NODE systemname="iPhoneFantastickInput" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack 20190214\nodes\modules\iPhoneFantastickInput.v4p" nodename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack 20190214\nodes\modules\iPhoneFantastickInput.v4p" componentmode="Hidden" id="35">
+   <BOUNDS type="Node" left="8220" top="2745" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Window" left="19350" top="2175" width="13260" height="15150">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8220" top="2745">
+   </BOUNDS>
+   <PIN pinname="iPhone ID" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="35" srcpinname="iPhone X" dstnodeid="41" dstpinname="X">
+   </LINK>
+   <LINK srcnodeid="35" srcpinname="iPhone Y" dstnodeid="41" dstpinname="Y">
+   </LINK>
+   <LINK srcnodeid="40" srcpinname="Y Output Value" dstnodeid="35" dstpinname="UDP Port">
+   </LINK>
+   <LINK srcnodeid="38" srcpinname="Y Output Value" dstnodeid="35" dstpinname="Flip Portrait/Landscape">
+   </LINK>
+   <LINK srcnodeid="37" srcpinname="Y Output Value" dstnodeid="35" dstpinname="Enable">
+   </LINK>
+   <LINK srcnodeid="38" srcpinname="Y Output Value" dstnodeid="39" dstpinname="Flip portrait/landscape">
+   </LINK>
+   <LINK srcnodeid="35" srcpinname="iPhone ID" dstnodeid="18" dstpinname="Input 3">
+   </LINK>
+   <LINK srcnodeid="39" srcpinname="Cursor Position XY" dstnodeid="15" dstpinname="Input 4">
+   </LINK>
+   <LINK srcnodeid="39" srcpinname="Cursor ID" dstnodeid="18" dstpinname="Input 4">
+   </LINK>
+   <LINK srcnodeid="41" srcpinname="XY" dstnodeid="15" dstpinname="Input 3">
+   </LINK>
+   <PACK Name="dx11" Version="1.3.1">
+   </PACK>
    </PATCH>

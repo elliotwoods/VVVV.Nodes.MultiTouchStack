@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\modules\PreviewSlide (MulitTouchStack Debug DX9).v4p" systemname="PreviewSlide (MulitTouchStack Debug DX9)" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\modules\PreviewSlide (MulitTouchStack Debug DX9).v4p" scrollx="0" scrolly="-360">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\modules\PreviewSlide (MulitTouchStack Debug DX9).v4p" systemname="PreviewSlide (MulitTouchStack Debug DX9)" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\modules\PreviewSlide (MulitTouchStack Debug DX9).v4p" scrollx="0" scrolly="-360">
    <BOUNDS type="Window" left="4605" top="705" width="10050" height="11070">
    </BOUNDS>
-   <PACK Name="addonpack" Version="38.1.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE systemname="Slide (MultiTouchStack Split)" filename="%VVVV%\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\src\VVVV.Nodes.MultiTouchStack.csproj" nodename="Slide (MultiTouchStack Split)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="1599" top="1248" width="4884" height="276">
@@ -411,7 +411,7 @@
    </PIN>
    <PIN pinname="Text Rendering Mode" slicecount="1" values="MultiLine">
    </PIN>
-   <PIN pinname="Font" slicecount="1" values="|Acumin Pro|">
+   <PIN pinname="Font" slicecount="1" values="Arial">
    </PIN>
    <PIN pinname="Quality" slicecount="1" values="Default">
    </PIN>

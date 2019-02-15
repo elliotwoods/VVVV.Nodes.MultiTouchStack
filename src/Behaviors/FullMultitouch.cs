@@ -7,20 +7,21 @@ using VVVV.Utils.VMath;
 
 namespace VVVV.Nodes.MultiTouchStack.Behaviors
 {
-	public class FullMultitouch : IBehavior
+	public class FullMultitouch : Behavior
 	{
-		public override Matrix4x4 Perform(Matrix4x4 transform, PerformArguments performArguments)
+		public override bool Perform(PerformArguments performArguments, Matrix4x4 oldTransform, ref Matrix4x4 newTransform)
 		{
 			var cursorCount = performArguments.Cursors.Count();
 
 			if (cursorCount < 1)
 			{
-				throw new Exception();
+				// We should never arrive here
+				return false;
 			}
 			if (cursorCount < 2)
 			{
 				// revert to translate only
-				return TranslateNode.PrincipalBehavior.Perform(transform, performArguments);
+				return TranslateNode.PrincipalBehavior.Perform(performArguments, oldTransform, ref newTransform);
 			}
 
 			performArguments.ActionsApplied.Add(ActionsApplied.Translate);
@@ -53,7 +54,9 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 			double num15 = num5 - (num13 * num1 + num14 * num2);
 			double num16 = num6 - (-num14 * num1 + num13 * num2);
 
-			return transform * new Matrix4x4(num13, -num14, 0.0, 0.0, num14, num13, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, num15, num16, 0.0, 1.0);
+			newTransform = oldTransform * new Matrix4x4(num13, -num14, 0.0, 0.0, num14, num13, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, num15, num16, 0.0, 1.0);
+
+			return true;
 		}
 	}
 }

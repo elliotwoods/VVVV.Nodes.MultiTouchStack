@@ -27,44 +27,48 @@ namespace VVVV.Nodes.MultiTouchStack.Behaviors
 		public HashSet<ActionsApplied> ActionsApplied; // As you perform you should update this enum
 	}
 
-	public class IBehavior
+	public interface IBehavior
 	{
-		virtual public bool PerformAndValidate(PerformArguments performArguments, Matrix4x4 priorTransform, out Matrix4x4 newTransform)
+		bool PerformAndValidate(PerformArguments performArguments, Matrix4x4 priorTransform, ref Matrix4x4 newTransform);
+	}
+
+	public abstract class Behavior : IBehavior
+	{
+		public bool PerformAndValidate(PerformArguments performArguments, Matrix4x4 priorTransform, ref Matrix4x4 newTransform)
 		{
 			// For PerformAndValidate the call tree goes:
-			// IBehaviour-override->Combined-calls->Principal-usessuperclass->IBehaviour
+			// IBehavior-override->Combined-calls->Principal-usessuperclass->IBehavior
 			// Then inside here we do Perform and do a Validate
 
-			try
-			{
-				// Reset the HashSet
-				performArguments.ActionsApplied = new HashSet<ActionsApplied>();
+			// Reset the HashSet
+			performArguments.ActionsApplied = new HashSet<ActionsApplied>();
 
-				newTransform = this.Perform(priorTransform, performArguments);
+			if (!this.Perform(performArguments, priorTransform, ref newTransform))
+			{
+				// Failed to perform (e.g. not enough cursors)
+				return false;
+			}
+			else
+			{
+				// Performed
 				if (performArguments.ValidateFunction == null)
 				{
+					// No Constraints required
 					return true;
 				}
 				else
 				{
-					return performArguments.ValidateFunction(new ValidateFunctionArguments {
+					// Check if passed Constraints
+					var success = performArguments.ValidateFunction(new ValidateFunctionArguments
+					{
 						Transform = newTransform,
 						ActionsApplied = performArguments.ActionsApplied
 					});
+					return success;
 				}
-			}
-			catch
-			{
-				//this action could not be performed
-				newTransform = priorTransform;
-				return false;
 			}
 		}
 
-		virtual public Matrix4x4 Perform(Matrix4x4 transform, PerformArguments performArguments)
-		{
-			//default is no action
-			return transform;
-		}
+		abstract public bool Perform(PerformArguments performArguments, Matrix4x4 transform, ref Matrix4x4 newTransform);
 	}
 }

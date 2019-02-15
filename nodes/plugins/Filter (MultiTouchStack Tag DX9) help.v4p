@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\Filter (MultiTouchStack Tag DX9) help.v4p" scrollx="0" scrolly="0" systemname="Filter (MultiTouchStack Tag DX9) help" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\Filter (MultiTouchStack Tag DX9) help.v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta35.8.dtd" >
+   <PATCH nodename="C:\vvvv\vvvv_50beta35.8_x64\packs\VVVV.Nodes.MultiTouchStack\nodes\plugins\Filter (MultiTouchStack Tag DX9) help.v4p" scrollx="0" scrolly="0" systemname="Filter (MultiTouchStack Tag DX9) help" filename="C:\Users\User\Desktop\multitouch stack test\vvvv_50beta38.1_x64\packs\VVVV.Nodes.MultiTouchStack-master\nodes\plugins\Filter (MultiTouchStack Tag DX9) help.v4p">
    <BOUNDS type="Window" left="14445" top="2175" width="13200" height="16170">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3" systemname="IOBox (String)">
@@ -110,7 +110,7 @@
    <PIN pinname="Tags" visible="1">
    </PIN>
    </NODE>
-   <PACK Name="addonpack" Version="38.1.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE systemname="IOBox (String)" nodename="IOBox (String)" componentmode="InABox" id="19">
    <BOUNDS type="Node" left="3780" top="1164" width="100" height="100">
